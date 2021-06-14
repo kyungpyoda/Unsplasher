@@ -7,12 +7,16 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		BB7B7CC62409677D61D35A90 /* Pods_Unsplasher.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4BCDCADD003CFA742C6C06F3 /* Pods_Unsplasher.framework */; };
 		D48CE60526777545000438A7 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D48CE60426777545000438A7 /* AppDelegate.swift */; };
 		D48CE60E26777546000438A7 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D48CE60D26777546000438A7 /* Assets.xcassets */; };
 		D48CE61126777546000438A7 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D48CE60F26777546000438A7 /* LaunchScreen.storyboard */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		4BCDCADD003CFA742C6C06F3 /* Pods_Unsplasher.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Unsplasher.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		596C2517AECFBB3D5B88C086 /* Pods-Unsplasher.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Unsplasher.debug.xcconfig"; path = "Target Support Files/Pods-Unsplasher/Pods-Unsplasher.debug.xcconfig"; sourceTree = "<group>"; };
+		CF3B8B5EF95FA6D6A6EABF15 /* Pods-Unsplasher.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Unsplasher.release.xcconfig"; path = "Target Support Files/Pods-Unsplasher/Pods-Unsplasher.release.xcconfig"; sourceTree = "<group>"; };
 		D48CE60126777545000438A7 /* Unsplasher.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Unsplasher.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D48CE60426777545000438A7 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		D48CE60D26777546000438A7 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -25,17 +29,38 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BB7B7CC62409677D61D35A90 /* Pods_Unsplasher.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		BD317C94E63F6EFD51204696 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				596C2517AECFBB3D5B88C086 /* Pods-Unsplasher.debug.xcconfig */,
+				CF3B8B5EF95FA6D6A6EABF15 /* Pods-Unsplasher.release.xcconfig */,
+			);
+			name = Pods;
+			path = Pods;
+			sourceTree = "<group>";
+		};
+		CA80D1EA2678E4A7CBFA8282 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				4BCDCADD003CFA742C6C06F3 /* Pods_Unsplasher.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		D48CE5F826777545000438A7 = {
 			isa = PBXGroup;
 			children = (
 				D48CE60326777545000438A7 /* Unsplasher */,
 				D48CE60226777545000438A7 /* Products */,
+				BD317C94E63F6EFD51204696 /* Pods */,
+				CA80D1EA2678E4A7CBFA8282 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -65,9 +90,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = D48CE61526777546000438A7 /* Build configuration list for PBXNativeTarget "Unsplasher" */;
 			buildPhases = (
+				2A8D66C08BA0DBBAF65636BC /* [CP] Check Pods Manifest.lock */,
 				D48CE5FD26777545000438A7 /* Sources */,
 				D48CE5FE26777545000438A7 /* Frameworks */,
 				D48CE5FF26777545000438A7 /* Resources */,
+				4F101BE0AF68B04C7B1BE5D8 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -121,6 +148,48 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		2A8D66C08BA0DBBAF65636BC /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-Unsplasher-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		4F101BE0AF68B04C7B1BE5D8 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Unsplasher/Pods-Unsplasher-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Unsplasher/Pods-Unsplasher-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Unsplasher/Pods-Unsplasher-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		D48CE5FD26777545000438A7 /* Sources */ = {
@@ -263,6 +332,7 @@
 		};
 		D48CE61626777546000438A7 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 596C2517AECFBB3D5B88C086 /* Pods-Unsplasher.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -283,6 +353,7 @@
 		};
 		D48CE61726777546000438A7 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = CF3B8B5EF95FA6D6A6EABF15 /* Pods-Unsplasher.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
