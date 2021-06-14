@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 51;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -11,6 +11,9 @@
 		D48CE60526777545000438A7 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D48CE60426777545000438A7 /* AppDelegate.swift */; };
 		D48CE60E26777546000438A7 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D48CE60D26777546000438A7 /* Assets.xcassets */; };
 		D48CE61126777546000438A7 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D48CE60F26777546000438A7 /* LaunchScreen.storyboard */; };
+		D48CE61D26777A1A000438A7 /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D48CE61C26777A1A000438A7 /* SearchViewController.swift */; };
+		D48CE61F26777A21000438A7 /* PopularViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D48CE61E26777A21000438A7 /* PopularViewController.swift */; };
+		D48CE62126777A29000438A7 /* FavoriteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D48CE62026777A29000438A7 /* FavoriteViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -22,6 +25,9 @@
 		D48CE60D26777546000438A7 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		D48CE61026777546000438A7 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		D48CE61226777546000438A7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		D48CE61C26777A1A000438A7 /* SearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
+		D48CE61E26777A21000438A7 /* PopularViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopularViewController.swift; sourceTree = "<group>"; };
+		D48CE62026777A29000438A7 /* FavoriteViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -42,7 +48,6 @@
 				596C2517AECFBB3D5B88C086 /* Pods-Unsplasher.debug.xcconfig */,
 				CF3B8B5EF95FA6D6A6EABF15 /* Pods-Unsplasher.release.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
 			sourceTree = "<group>";
 		};
@@ -79,8 +84,43 @@
 				D48CE60D26777546000438A7 /* Assets.xcassets */,
 				D48CE60F26777546000438A7 /* LaunchScreen.storyboard */,
 				D48CE60426777545000438A7 /* AppDelegate.swift */,
+				D48CE61826777723000438A7 /* Scene */,
 			);
 			path = Unsplasher;
+			sourceTree = "<group>";
+		};
+		D48CE61826777723000438A7 /* Scene */ = {
+			isa = PBXGroup;
+			children = (
+				D48CE61926777788000438A7 /* SearchScene */,
+				D48CE61A26777790000438A7 /* PopularScene */,
+				D48CE61B267779E9000438A7 /* FavoriteScene */,
+			);
+			path = Scene;
+			sourceTree = "<group>";
+		};
+		D48CE61926777788000438A7 /* SearchScene */ = {
+			isa = PBXGroup;
+			children = (
+				D48CE61C26777A1A000438A7 /* SearchViewController.swift */,
+			);
+			path = SearchScene;
+			sourceTree = "<group>";
+		};
+		D48CE61A26777790000438A7 /* PopularScene */ = {
+			isa = PBXGroup;
+			children = (
+				D48CE61E26777A21000438A7 /* PopularViewController.swift */,
+			);
+			path = PopularScene;
+			sourceTree = "<group>";
+		};
+		D48CE61B267779E9000438A7 /* FavoriteScene */ = {
+			isa = PBXGroup;
+			children = (
+				D48CE62026777A29000438A7 /* FavoriteViewController.swift */,
+			);
+			path = FavoriteScene;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -196,6 +236,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D48CE61F26777A21000438A7 /* PopularViewController.swift in Sources */,
+				D48CE61D26777A1A000438A7 /* SearchViewController.swift in Sources */,
+				D48CE62126777A29000438A7 /* FavoriteViewController.swift in Sources */,
 				D48CE60526777545000438A7 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
