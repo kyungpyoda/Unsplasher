@@ -22,7 +22,7 @@ final class FavoriteViewController: UIViewController {
     }
     
     private func setUp() {
-        
+        view.backgroundColor = .systemOrange
     }
     
 }

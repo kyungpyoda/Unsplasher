@@ -22,7 +22,7 @@ final class SearchViewController: UIViewController {
     }
     
     private func setUp() {
-        
+        view.backgroundColor = .systemGreen
     }
     
 }

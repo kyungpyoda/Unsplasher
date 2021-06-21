@@ -22,7 +22,7 @@ final class PopularViewController: UIViewController {
     }
     
     private func setUp() {
-        
+        view.backgroundColor = .systemTeal
     }
     
 }

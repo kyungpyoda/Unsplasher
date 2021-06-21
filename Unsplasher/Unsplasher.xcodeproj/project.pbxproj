@@ -15,6 +15,7 @@
 		D48CE61F26777A21000438A7 /* PopularViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D48CE61E26777A21000438A7 /* PopularViewController.swift */; };
 		D48CE62126777A29000438A7 /* FavoriteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D48CE62026777A29000438A7 /* FavoriteViewController.swift */; };
 		D49CAA8C268079B000B87587 /* LaunchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D49CAA8B268079B000B87587 /* LaunchViewController.swift */; };
+		D49CAA8E268079DB00B87587 /* MainTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D49CAA8D268079DB00B87587 /* MainTabBarController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -30,6 +31,7 @@
 		D48CE61E26777A21000438A7 /* PopularViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopularViewController.swift; sourceTree = "<group>"; };
 		D48CE62026777A29000438A7 /* FavoriteViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteViewController.swift; sourceTree = "<group>"; };
 		D49CAA8B268079B000B87587 /* LaunchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LaunchViewController.swift; sourceTree = "<group>"; };
+		D49CAA8D268079DB00B87587 /* MainTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabBarController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -95,6 +97,7 @@
 			isa = PBXGroup;
 			children = (
 				D49CAA8B268079B000B87587 /* LaunchViewController.swift */,
+				D49CAA8D268079DB00B87587 /* MainTabBarController.swift */,
 				D48CE61926777788000438A7 /* SearchScene */,
 				D48CE61A26777790000438A7 /* PopularScene */,
 				D48CE61B267779E9000438A7 /* FavoriteScene */,
@@ -240,6 +243,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				D48CE61F26777A21000438A7 /* PopularViewController.swift in Sources */,
+				D49CAA8E268079DB00B87587 /* MainTabBarController.swift in Sources */,
 				D48CE61D26777A1A000438A7 /* SearchViewController.swift in Sources */,
 				D48CE62126777A29000438A7 /* FavoriteViewController.swift in Sources */,
 				D49CAA8C268079B000B87587 /* LaunchViewController.swift in Sources */,

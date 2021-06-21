@@ -45,6 +45,8 @@ final class LaunchViewController: UIViewController {
     
     private func start() {
         DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
+            let mainTab = MainTabBarController()
+            AppDelegate.shared?.swapVC(to: mainTab)
         }
     }
     
