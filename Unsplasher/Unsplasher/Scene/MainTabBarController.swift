@@ -10,6 +10,10 @@ import UIKit
 final class MainTabBarController: UITabBarController {
     
     private enum Tab: CaseIterable {
+        static let searchImage: UIImage? = .init(named: "search")?.withRenderingMode(.alwaysTemplate)
+        static let fireImage: UIImage? = .init(named: "fire")?.withRenderingMode(.alwaysTemplate)
+        static let heartImage: UIImage? = .init(named: "heart")?.withRenderingMode(.alwaysTemplate)
+        
         case search
         case popular
         case favorite
@@ -19,20 +23,20 @@ final class MainTabBarController: UITabBarController {
             case .search:
                 return .init(
                     title: "",
-                    image: .init(named: "search"),
-                    selectedImage: .init(named: "search")
+                    image: Tab.searchImage,
+                    selectedImage: Tab.searchImage
                 )
             case .popular:
                 return .init(
                     title: "",
-                    image: .init(named: "fire"),
-                    selectedImage: .init(named: "fire")
+                    image: Tab.fireImage,
+                    selectedImage: Tab.fireImage
                 )
             case .favorite:
                 return .init(
                     title: "",
-                    image: .init(named: "heart"),
-                    selectedImage: .init(named: "heart")
+                    image: Tab.heartImage,
+                    selectedImage: Tab.heartImage
                 )
             }
         }
@@ -47,6 +51,7 @@ final class MainTabBarController: UITabBarController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        tabBar.tintColor = .label
         setUp()
     }
     
