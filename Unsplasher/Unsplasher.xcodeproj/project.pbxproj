@@ -10,6 +10,7 @@
 		BB7B7CC62409677D61D35A90 /* Pods_Unsplasher.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4BCDCADD003CFA742C6C06F3 /* Pods_Unsplasher.framework */; };
 		D40016E72680DDF6003CF521 /* SearchCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D40016E62680DDF6003CF521 /* SearchCell.swift */; };
 		D40016E92680DE54003CF521 /* Cell+Reusable.swift in Sources */ = {isa = PBXBuildFile; fileRef = D40016E82680DE54003CF521 /* Cell+Reusable.swift */; };
+		D40016EB2680ECE3003CF521 /* PopularCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D40016EA2680ECE3003CF521 /* PopularCell.swift */; };
 		D48CE60526777545000438A7 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D48CE60426777545000438A7 /* AppDelegate.swift */; };
 		D48CE60E26777546000438A7 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D48CE60D26777546000438A7 /* Assets.xcassets */; };
 		D48CE61126777546000438A7 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D48CE60F26777546000438A7 /* LaunchScreen.storyboard */; };
@@ -26,6 +27,7 @@
 		CF3B8B5EF95FA6D6A6EABF15 /* Pods-Unsplasher.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Unsplasher.release.xcconfig"; path = "Target Support Files/Pods-Unsplasher/Pods-Unsplasher.release.xcconfig"; sourceTree = "<group>"; };
 		D40016E62680DDF6003CF521 /* SearchCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchCell.swift; sourceTree = "<group>"; };
 		D40016E82680DE54003CF521 /* Cell+Reusable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Cell+Reusable.swift"; sourceTree = "<group>"; };
+		D40016EA2680ECE3003CF521 /* PopularCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopularCell.swift; sourceTree = "<group>"; };
 		D48CE60126777545000438A7 /* Unsplasher.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Unsplasher.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D48CE60426777545000438A7 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		D48CE60D26777546000438A7 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -140,6 +142,7 @@
 			isa = PBXGroup;
 			children = (
 				D48CE61E26777A21000438A7 /* PopularViewController.swift */,
+				D40016EA2680ECE3003CF521 /* PopularCell.swift */,
 			);
 			path = PopularScene;
 			sourceTree = "<group>";
@@ -267,6 +270,7 @@
 			files = (
 				D40016E72680DDF6003CF521 /* SearchCell.swift in Sources */,
 				D48CE61F26777A21000438A7 /* PopularViewController.swift in Sources */,
+				D40016EB2680ECE3003CF521 /* PopularCell.swift in Sources */,
 				D49CAA8E268079DB00B87587 /* MainTabBarController.swift in Sources */,
 				D48CE61D26777A1A000438A7 /* SearchViewController.swift in Sources */,
 				D40016E92680DE54003CF521 /* Cell+Reusable.swift in Sources */,

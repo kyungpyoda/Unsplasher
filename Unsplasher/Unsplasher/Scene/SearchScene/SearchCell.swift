@@ -42,7 +42,7 @@ final class SearchCell: UICollectionViewCell {
         imageView.image = Self.defaultImage
     }
     
-    private func configure(imageURLStr: String) {
+    func configure(imageURLStr: String) {
         // TODO: implement image loader, fetch image with url
     }
     
