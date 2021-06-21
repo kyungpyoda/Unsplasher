@@ -9,6 +9,11 @@ import UIKit
 
 final class PopularViewController: UIViewController {
     
+    private let tableView: UITableView = .init().then {
+        $0.backgroundColor = .systemBackground
+        $0.separatorStyle = .none
+    }
+    
     init() {
         super.init(nibName: nil, bundle: nil)
     }
@@ -22,7 +27,40 @@ final class PopularViewController: UIViewController {
     }
     
     private func setUp() {
-        view.backgroundColor = .systemTeal
+        setUpUI()
+        setUpTableView()
+    }
+    
+    private func setUpUI() {
+        view.backgroundColor = .systemBackground
+        
+        view.addSubview(tableView)
+        tableView.snp.makeConstraints {
+            $0.edges.equalTo(self.view.safeAreaLayoutGuide)
+        }
+    }
+    
+    private func setUpTableView() {
+        tableView.register(PopularCell.self, forCellReuseIdentifier: PopularCell.reuseIdentifier)
+        tableView.dataSource = self
+    }
+    
+}
+
+// MARK: - TableView DataSource
+
+extension PopularViewController: UITableViewDataSource {
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return 10
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: PopularCell.reuseIdentifier, for: indexPath) as? PopularCell else {
+            return UITableViewCell()
+        }
+        cell.configure(imageURLStr: "", title: "A popular picture")
+        return cell
     }
     
 }
