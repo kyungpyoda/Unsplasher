@@ -8,18 +8,27 @@
 
 /* Begin PBXBuildFile section */
 		BB7B7CC62409677D61D35A90 /* Pods_Unsplasher.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4BCDCADD003CFA742C6C06F3 /* Pods_Unsplasher.framework */; };
+		D40016E72680DDF6003CF521 /* SearchCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D40016E62680DDF6003CF521 /* SearchCell.swift */; };
+		D40016E92680DE54003CF521 /* Cell+Reusable.swift in Sources */ = {isa = PBXBuildFile; fileRef = D40016E82680DE54003CF521 /* Cell+Reusable.swift */; };
+		D40016EB2680ECE3003CF521 /* PopularCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D40016EA2680ECE3003CF521 /* PopularCell.swift */; };
 		D48CE60526777545000438A7 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D48CE60426777545000438A7 /* AppDelegate.swift */; };
 		D48CE60E26777546000438A7 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D48CE60D26777546000438A7 /* Assets.xcassets */; };
 		D48CE61126777546000438A7 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D48CE60F26777546000438A7 /* LaunchScreen.storyboard */; };
 		D48CE61D26777A1A000438A7 /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D48CE61C26777A1A000438A7 /* SearchViewController.swift */; };
 		D48CE61F26777A21000438A7 /* PopularViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D48CE61E26777A21000438A7 /* PopularViewController.swift */; };
 		D48CE62126777A29000438A7 /* FavoriteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D48CE62026777A29000438A7 /* FavoriteViewController.swift */; };
+		D49068822686E02C00316379 /* FavoriteCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D49068812686E02C00316379 /* FavoriteCell.swift */; };
+		D49CAA8C268079B000B87587 /* LaunchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D49CAA8B268079B000B87587 /* LaunchViewController.swift */; };
+		D49CAA8E268079DB00B87587 /* MainTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D49CAA8D268079DB00B87587 /* MainTabBarController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		4BCDCADD003CFA742C6C06F3 /* Pods_Unsplasher.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Unsplasher.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		596C2517AECFBB3D5B88C086 /* Pods-Unsplasher.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Unsplasher.debug.xcconfig"; path = "Target Support Files/Pods-Unsplasher/Pods-Unsplasher.debug.xcconfig"; sourceTree = "<group>"; };
 		CF3B8B5EF95FA6D6A6EABF15 /* Pods-Unsplasher.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Unsplasher.release.xcconfig"; path = "Target Support Files/Pods-Unsplasher/Pods-Unsplasher.release.xcconfig"; sourceTree = "<group>"; };
+		D40016E62680DDF6003CF521 /* SearchCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchCell.swift; sourceTree = "<group>"; };
+		D40016E82680DE54003CF521 /* Cell+Reusable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Cell+Reusable.swift"; sourceTree = "<group>"; };
+		D40016EA2680ECE3003CF521 /* PopularCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopularCell.swift; sourceTree = "<group>"; };
 		D48CE60126777545000438A7 /* Unsplasher.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Unsplasher.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D48CE60426777545000438A7 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		D48CE60D26777546000438A7 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -28,6 +37,9 @@
 		D48CE61C26777A1A000438A7 /* SearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
 		D48CE61E26777A21000438A7 /* PopularViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopularViewController.swift; sourceTree = "<group>"; };
 		D48CE62026777A29000438A7 /* FavoriteViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteViewController.swift; sourceTree = "<group>"; };
+		D49068812686E02C00316379 /* FavoriteCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteCell.swift; sourceTree = "<group>"; };
+		D49CAA8B268079B000B87587 /* LaunchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LaunchViewController.swift; sourceTree = "<group>"; };
+		D49CAA8D268079DB00B87587 /* MainTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabBarController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -59,6 +71,22 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		D40016E22680CD6D003CF521 /* Common */ = {
+			isa = PBXGroup;
+			children = (
+				D40016E32680CD9E003CF521 /* Extension */,
+			);
+			path = Common;
+			sourceTree = "<group>";
+		};
+		D40016E32680CD9E003CF521 /* Extension */ = {
+			isa = PBXGroup;
+			children = (
+				D40016E82680DE54003CF521 /* Cell+Reusable.swift */,
+			);
+			path = Extension;
+			sourceTree = "<group>";
+		};
 		D48CE5F826777545000438A7 = {
 			isa = PBXGroup;
 			children = (
@@ -85,6 +113,7 @@
 				D48CE60F26777546000438A7 /* LaunchScreen.storyboard */,
 				D48CE60426777545000438A7 /* AppDelegate.swift */,
 				D48CE61826777723000438A7 /* Scene */,
+				D40016E22680CD6D003CF521 /* Common */,
 			);
 			path = Unsplasher;
 			sourceTree = "<group>";
@@ -92,6 +121,8 @@
 		D48CE61826777723000438A7 /* Scene */ = {
 			isa = PBXGroup;
 			children = (
+				D49CAA8B268079B000B87587 /* LaunchViewController.swift */,
+				D49CAA8D268079DB00B87587 /* MainTabBarController.swift */,
 				D48CE61926777788000438A7 /* SearchScene */,
 				D48CE61A26777790000438A7 /* PopularScene */,
 				D48CE61B267779E9000438A7 /* FavoriteScene */,
@@ -103,6 +134,7 @@
 			isa = PBXGroup;
 			children = (
 				D48CE61C26777A1A000438A7 /* SearchViewController.swift */,
+				D40016E62680DDF6003CF521 /* SearchCell.swift */,
 			);
 			path = SearchScene;
 			sourceTree = "<group>";
@@ -111,6 +143,7 @@
 			isa = PBXGroup;
 			children = (
 				D48CE61E26777A21000438A7 /* PopularViewController.swift */,
+				D40016EA2680ECE3003CF521 /* PopularCell.swift */,
 			);
 			path = PopularScene;
 			sourceTree = "<group>";
@@ -119,6 +152,7 @@
 			isa = PBXGroup;
 			children = (
 				D48CE62026777A29000438A7 /* FavoriteViewController.swift */,
+				D49068812686E02C00316379 /* FavoriteCell.swift */,
 			);
 			path = FavoriteScene;
 			sourceTree = "<group>";
@@ -236,9 +270,15 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D40016E72680DDF6003CF521 /* SearchCell.swift in Sources */,
 				D48CE61F26777A21000438A7 /* PopularViewController.swift in Sources */,
+				D40016EB2680ECE3003CF521 /* PopularCell.swift in Sources */,
+				D49CAA8E268079DB00B87587 /* MainTabBarController.swift in Sources */,
 				D48CE61D26777A1A000438A7 /* SearchViewController.swift in Sources */,
+				D40016E92680DE54003CF521 /* Cell+Reusable.swift in Sources */,
 				D48CE62126777A29000438A7 /* FavoriteViewController.swift in Sources */,
+				D49068822686E02C00316379 /* FavoriteCell.swift in Sources */,
+				D49CAA8C268079B000B87587 /* LaunchViewController.swift in Sources */,
 				D48CE60526777545000438A7 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
