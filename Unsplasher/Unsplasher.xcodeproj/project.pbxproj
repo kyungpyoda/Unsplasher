@@ -87,6 +87,35 @@
 			path = Extension;
 			sourceTree = "<group>";
 		};
+		D4813AB1268874890065C27C /* Supporting */ = {
+			isa = PBXGroup;
+			children = (
+				D48CE61226777546000438A7 /* Info.plist */,
+			);
+			path = Supporting;
+			sourceTree = "<group>";
+		};
+		D4813AB2268874900065C27C /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				D48CE60D26777546000438A7 /* Assets.xcassets */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
+		D4813AB3268874A60065C27C /* Sources */ = {
+			isa = PBXGroup;
+			children = (
+				D48CE60F26777546000438A7 /* LaunchScreen.storyboard */,
+				D48CE60426777545000438A7 /* AppDelegate.swift */,
+				D48CE61826777723000438A7 /* Scene */,
+				D49CAA882680762600B87587 /* Service */,
+				D49CAA85268075C900B87587 /* Repository */,
+				D40016E22680CD6D003CF521 /* Common */,
+			);
+			path = Sources;
+			sourceTree = "<group>";
+		};
 		D48CE5F826777545000438A7 = {
 			isa = PBXGroup;
 			children = (
@@ -108,12 +137,9 @@
 		D48CE60326777545000438A7 /* Unsplasher */ = {
 			isa = PBXGroup;
 			children = (
-				D48CE61226777546000438A7 /* Info.plist */,
-				D48CE60D26777546000438A7 /* Assets.xcassets */,
-				D48CE60F26777546000438A7 /* LaunchScreen.storyboard */,
-				D48CE60426777545000438A7 /* AppDelegate.swift */,
-				D48CE61826777723000438A7 /* Scene */,
-				D40016E22680CD6D003CF521 /* Common */,
+				D4813AB1268874890065C27C /* Supporting */,
+				D4813AB2268874900065C27C /* Resources */,
+				D4813AB3268874A60065C27C /* Sources */,
 			);
 			path = Unsplasher;
 			sourceTree = "<group>";
@@ -155,6 +181,20 @@
 				D49068812686E02C00316379 /* FavoriteCell.swift */,
 			);
 			path = FavoriteScene;
+			sourceTree = "<group>";
+		};
+		D49CAA85268075C900B87587 /* Repository */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Repository;
+			sourceTree = "<group>";
+		};
+		D49CAA882680762600B87587 /* Service */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Service;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -421,7 +461,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 38DT2DCWWK;
-				INFOPLIST_FILE = Unsplasher/Info.plist;
+				INFOPLIST_FILE = Unsplasher/Supporting/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -442,7 +482,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 38DT2DCWWK;
-				INFOPLIST_FILE = Unsplasher/Info.plist;
+				INFOPLIST_FILE = Unsplasher/Supporting/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",

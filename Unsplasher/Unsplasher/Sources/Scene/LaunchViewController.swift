@@ -27,8 +27,10 @@ final class LaunchViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         setUp()
-        start()
+        
+        check()
     }
     
     private func setUp() {
@@ -43,7 +45,28 @@ final class LaunchViewController: UIViewController {
         }
     }
     
-    private func start() {
+    private func check() {
+        do {
+            try GlobalProperty.shared.setUp()
+            print("APIKey:", GlobalProperty.shared.apiKey)
+            
+            goMain()
+        } catch {
+            print(error)
+            
+            let alertVC = UIAlertController(
+                title: "실행 불가",
+                message: "⚠️\(error)",
+                preferredStyle: .alert
+            )
+            view.addSubview(alertVC.view)
+            alertVC.view.snp.makeConstraints {
+                $0.center.equalTo(view.safeAreaLayoutGuide)
+            }
+        }
+    }
+    
+    private func goMain() {
         DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
             let mainTab = MainTabBarController()
             AppDelegate.shared?.swapVC(to: mainTab)
