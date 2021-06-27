@@ -17,6 +17,7 @@
 		D48CE61D26777A1A000438A7 /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D48CE61C26777A1A000438A7 /* SearchViewController.swift */; };
 		D48CE61F26777A21000438A7 /* PopularViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D48CE61E26777A21000438A7 /* PopularViewController.swift */; };
 		D48CE62126777A29000438A7 /* FavoriteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D48CE62026777A29000438A7 /* FavoriteViewController.swift */; };
+		D49068822686E02C00316379 /* FavoriteCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D49068812686E02C00316379 /* FavoriteCell.swift */; };
 		D49CAA8C268079B000B87587 /* LaunchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D49CAA8B268079B000B87587 /* LaunchViewController.swift */; };
 		D49CAA8E268079DB00B87587 /* MainTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D49CAA8D268079DB00B87587 /* MainTabBarController.swift */; };
 /* End PBXBuildFile section */
@@ -36,6 +37,7 @@
 		D48CE61C26777A1A000438A7 /* SearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
 		D48CE61E26777A21000438A7 /* PopularViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopularViewController.swift; sourceTree = "<group>"; };
 		D48CE62026777A29000438A7 /* FavoriteViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteViewController.swift; sourceTree = "<group>"; };
+		D49068812686E02C00316379 /* FavoriteCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteCell.swift; sourceTree = "<group>"; };
 		D49CAA8B268079B000B87587 /* LaunchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LaunchViewController.swift; sourceTree = "<group>"; };
 		D49CAA8D268079DB00B87587 /* MainTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabBarController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -81,7 +83,6 @@
 			isa = PBXGroup;
 			children = (
 				D40016E82680DE54003CF521 /* Cell+Reusable.swift */,
-				D40016E42680CDE6003CF521 /* UIViewController+embeddedInNavigation.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -151,6 +152,7 @@
 			isa = PBXGroup;
 			children = (
 				D48CE62026777A29000438A7 /* FavoriteViewController.swift */,
+				D49068812686E02C00316379 /* FavoriteCell.swift */,
 			);
 			path = FavoriteScene;
 			sourceTree = "<group>";
@@ -275,6 +277,7 @@
 				D48CE61D26777A1A000438A7 /* SearchViewController.swift in Sources */,
 				D40016E92680DE54003CF521 /* Cell+Reusable.swift in Sources */,
 				D48CE62126777A29000438A7 /* FavoriteViewController.swift in Sources */,
+				D49068822686E02C00316379 /* FavoriteCell.swift in Sources */,
 				D49CAA8C268079B000B87587 /* LaunchViewController.swift in Sources */,
 				D48CE60526777545000438A7 /* AppDelegate.swift in Sources */,
 			);
