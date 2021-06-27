@@ -47,8 +47,8 @@ final class LaunchViewController: UIViewController {
     
     private func check() {
         do {
-            try GlobalProperty.shared.setUp()
-            print("APIKey:", GlobalProperty.shared.apiKey)
+            let globalPropertyService = try GlobalPropertyService()
+            print("APIKey:", globalPropertyService.apiKey)
             
             goMain()
         } catch {
