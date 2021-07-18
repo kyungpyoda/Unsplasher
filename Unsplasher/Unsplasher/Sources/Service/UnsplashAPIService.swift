@@ -12,6 +12,8 @@ protocol UnsplashAPIServiceType {
     func searchImage(query: String,
                      page: Int,
                      completion: @escaping (Result<[ImageModel], Error>) -> ()) -> Void
+    func getPopulars(page: Int,
+                     completion: @escaping (Result<[ImageModel], Error>) -> ()) -> Void
 }
 
 final class UnsplashAPIService: UnsplashAPIServiceType {
@@ -41,8 +43,29 @@ final class UnsplashAPIService: UnsplashAPIServiceType {
         }
     }
     
+    func getPopulars(page: Int = 1,
+                      completion: @escaping (Result<[ImageModel], Error>) -> ()) {
+        let request = getPopularsRequest(page: page)
+        
+        networkManager.fetchData(urlRequest: request) { (result: Result<[ImageModel]?, Error>) in
+            switch result {
+            case .success(let responseData):
+                completion(.success(responseData ?? []))
+            case .failure(let error):
+                completion(.failure(error))
+            }
+        }
+    }
+    
     private func searchRequest(for query: String, page: Int) -> URLRequest {
         let endpoint = UnsplashEndpoint.search(query: query, page: page)
+        var request = endpoint.urlRequest
+        request.setValue("Client-ID \(apiKey)", forHTTPHeaderField: "Authorization")
+        return request
+    }
+    
+    private func getPopularsRequest(page: Int) -> URLRequest {
+        let endpoint = UnsplashEndpoint.getPopular(page: page)
         var request = endpoint.urlRequest
         request.setValue("Client-ID \(apiKey)", forHTTPHeaderField: "Authorization")
         return request

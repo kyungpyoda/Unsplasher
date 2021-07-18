@@ -66,7 +66,7 @@ final class MainTabBarController: UITabBarController {
                 vc.tabBarItem = tab.tabBarItem
                 return vc
             case .popular:
-                let vc = PopularViewController()
+                let vc = PopularViewController(provider: provider)
                 vc.tabBarItem = tab.tabBarItem
                 return vc
             case .favorite:
