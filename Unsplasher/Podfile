@@ -8,5 +8,6 @@ target 'Unsplasher' do
   # Pods for Unsplasher
   pod 'SnapKit'
   pod 'Then'
+  pod 'RealmSwift'
 
 end
