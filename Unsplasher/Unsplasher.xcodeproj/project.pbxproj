@@ -11,6 +11,7 @@
 		D40016E72680DDF6003CF521 /* SearchCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D40016E62680DDF6003CF521 /* SearchCell.swift */; };
 		D40016E92680DE54003CF521 /* Cell+Reusable.swift in Sources */ = {isa = PBXBuildFile; fileRef = D40016E82680DE54003CF521 /* Cell+Reusable.swift */; };
 		D40016EB2680ECE3003CF521 /* PopularCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D40016EA2680ECE3003CF521 /* PopularCell.swift */; };
+		D42B15E12690F0FA00238CEF /* ImageModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D42B15E02690F0FA00238CEF /* ImageModel.swift */; };
 		D4813AB72688767A0065C27C /* GlobalPropertyService.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4813AB62688767A0065C27C /* GlobalPropertyService.swift */; };
 		D48CE60526777545000438A7 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D48CE60426777545000438A7 /* AppDelegate.swift */; };
 		D48CE60E26777546000438A7 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D48CE60D26777546000438A7 /* Assets.xcassets */; };
@@ -19,8 +20,14 @@
 		D48CE61F26777A21000438A7 /* PopularViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D48CE61E26777A21000438A7 /* PopularViewController.swift */; };
 		D48CE62126777A29000438A7 /* FavoriteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D48CE62026777A29000438A7 /* FavoriteViewController.swift */; };
 		D49068822686E02C00316379 /* FavoriteCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D49068812686E02C00316379 /* FavoriteCell.swift */; };
+		D49CAA872680760800B87587 /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D49CAA862680760800B87587 /* NetworkManager.swift */; };
+		D49CAA8A2680796A00B87587 /* UnsplashAPIService.swift in Sources */ = {isa = PBXBuildFile; fileRef = D49CAA892680796A00B87587 /* UnsplashAPIService.swift */; };
 		D49CAA8C268079B000B87587 /* LaunchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D49CAA8B268079B000B87587 /* LaunchViewController.swift */; };
 		D49CAA8E268079DB00B87587 /* MainTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D49CAA8D268079DB00B87587 /* MainTabBarController.swift */; };
+		D4A9280B269068DF002B02D7 /* EndpointType.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4A9280A269068DF002B02D7 /* EndpointType.swift */; };
+		D4A9280D26907FF8002B02D7 /* UnsplashEndpoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4A9280C26907FF8002B02D7 /* UnsplashEndpoint.swift */; };
+		D4A9280F26908C2B002B02D7 /* ServiceProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4A9280E26908C2B002B02D7 /* ServiceProvider.swift */; };
+		D4A928112690D678002B02D7 /* ImageService.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4A928102690D678002B02D7 /* ImageService.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -30,6 +37,7 @@
 		D40016E62680DDF6003CF521 /* SearchCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchCell.swift; sourceTree = "<group>"; };
 		D40016E82680DE54003CF521 /* Cell+Reusable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Cell+Reusable.swift"; sourceTree = "<group>"; };
 		D40016EA2680ECE3003CF521 /* PopularCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopularCell.swift; sourceTree = "<group>"; };
+		D42B15E02690F0FA00238CEF /* ImageModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageModel.swift; sourceTree = "<group>"; };
 		D4813AB62688767A0065C27C /* GlobalPropertyService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GlobalPropertyService.swift; sourceTree = "<group>"; };
 		D48CE60126777545000438A7 /* Unsplasher.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Unsplasher.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D48CE60426777545000438A7 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -40,8 +48,14 @@
 		D48CE61E26777A21000438A7 /* PopularViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopularViewController.swift; sourceTree = "<group>"; };
 		D48CE62026777A29000438A7 /* FavoriteViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteViewController.swift; sourceTree = "<group>"; };
 		D49068812686E02C00316379 /* FavoriteCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteCell.swift; sourceTree = "<group>"; };
+		D49CAA862680760800B87587 /* NetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
+		D49CAA892680796A00B87587 /* UnsplashAPIService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UnsplashAPIService.swift; sourceTree = "<group>"; };
 		D49CAA8B268079B000B87587 /* LaunchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LaunchViewController.swift; sourceTree = "<group>"; };
 		D49CAA8D268079DB00B87587 /* MainTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabBarController.swift; sourceTree = "<group>"; };
+		D4A9280A269068DF002B02D7 /* EndpointType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EndpointType.swift; sourceTree = "<group>"; };
+		D4A9280C26907FF8002B02D7 /* UnsplashEndpoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UnsplashEndpoint.swift; sourceTree = "<group>"; };
+		D4A9280E26908C2B002B02D7 /* ServiceProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServiceProvider.swift; sourceTree = "<group>"; };
+		D4A928102690D678002B02D7 /* ImageService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageService.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -111,11 +125,20 @@
 				D48CE60F26777546000438A7 /* LaunchScreen.storyboard */,
 				D48CE60426777545000438A7 /* AppDelegate.swift */,
 				D48CE61826777723000438A7 /* Scene */,
+				D48B87AF268A333A00461E0D /* Model */,
 				D49CAA882680762600B87587 /* Service */,
 				D49CAA85268075C900B87587 /* Repository */,
 				D40016E22680CD6D003CF521 /* Common */,
 			);
 			path = Sources;
+			sourceTree = "<group>";
+		};
+		D48B87AF268A333A00461E0D /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				D42B15E02690F0FA00238CEF /* ImageModel.swift */,
+			);
+			path = Model;
 			sourceTree = "<group>";
 		};
 		D48CE5F826777545000438A7 = {
@@ -188,6 +211,8 @@
 		D49CAA85268075C900B87587 /* Repository */ = {
 			isa = PBXGroup;
 			children = (
+				D49CAA862680760800B87587 /* NetworkManager.swift */,
+				D4A9280A269068DF002B02D7 /* EndpointType.swift */,
 			);
 			path = Repository;
 			sourceTree = "<group>";
@@ -195,7 +220,11 @@
 		D49CAA882680762600B87587 /* Service */ = {
 			isa = PBXGroup;
 			children = (
+				D4A9280E26908C2B002B02D7 /* ServiceProvider.swift */,
 				D4813AB62688767A0065C27C /* GlobalPropertyService.swift */,
+				D49CAA892680796A00B87587 /* UnsplashAPIService.swift */,
+				D4A928102690D678002B02D7 /* ImageService.swift */,
+				D4A9280C26907FF8002B02D7 /* UnsplashEndpoint.swift */,
 			);
 			path = Service;
 			sourceTree = "<group>";
@@ -313,6 +342,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D4A9280B269068DF002B02D7 /* EndpointType.swift in Sources */,
+				D49CAA8A2680796A00B87587 /* UnsplashAPIService.swift in Sources */,
+				D4A9280D26907FF8002B02D7 /* UnsplashEndpoint.swift in Sources */,
 				D40016E72680DDF6003CF521 /* SearchCell.swift in Sources */,
 				D4813AB72688767A0065C27C /* GlobalPropertyService.swift in Sources */,
 				D48CE61F26777A21000438A7 /* PopularViewController.swift in Sources */,
@@ -321,9 +353,13 @@
 				D48CE61D26777A1A000438A7 /* SearchViewController.swift in Sources */,
 				D40016E92680DE54003CF521 /* Cell+Reusable.swift in Sources */,
 				D48CE62126777A29000438A7 /* FavoriteViewController.swift in Sources */,
+				D49CAA872680760800B87587 /* NetworkManager.swift in Sources */,
+				D4A9280F26908C2B002B02D7 /* ServiceProvider.swift in Sources */,
+				D4A928112690D678002B02D7 /* ImageService.swift in Sources */,
 				D49068822686E02C00316379 /* FavoriteCell.swift in Sources */,
 				D49CAA8C268079B000B87587 /* LaunchViewController.swift in Sources */,
 				D48CE60526777545000438A7 /* AppDelegate.swift in Sources */,
+				D42B15E12690F0FA00238CEF /* ImageModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

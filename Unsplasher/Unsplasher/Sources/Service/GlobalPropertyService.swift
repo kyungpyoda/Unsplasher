@@ -13,20 +13,33 @@ protocol GlobalPropertyServiceType {
 
 final class GlobalPropertyService: GlobalPropertyServiceType {
     
+    enum GlobalPropertyError: LocalizedError {
+        case NoInfoPlist
+        case NoAPIKey
+        
+        public var errorDescription: String? {
+            switch self {
+            case .NoInfoPlist:
+                return "There is no Info.plist file."
+            case .NoAPIKey:
+                return "There is no API Key."
+            }
+        }
+    }
+    
     /// APIKey 값은 Pods-Unsplasher.debug.xcconfig, Pods-Unsplasher.release.xcconfig 파일 안에 설정
     let apiKey: String
     
     init() throws {
-        guard let infoPlist = Bundle.main.infoDictionary,
-              let key = infoPlist["UnsplashAPIKey"] as? String else {
-            throw GlobalPropertyError.APIKeyError
+        guard let infoPlist = Bundle.main.infoDictionary else {
+            throw GlobalPropertyError.NoInfoPlist
+        }
+        
+        guard let key = infoPlist["UnsplashAPIKey"] as? String else {
+            throw GlobalPropertyError.NoAPIKey
         }
         
         apiKey = key
     }
     
-}
-
-enum GlobalPropertyError: LocalizedError {
-    case APIKeyError
 }
