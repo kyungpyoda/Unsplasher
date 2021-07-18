@@ -12,7 +12,7 @@ final class SearchCell: UICollectionViewCell {
     static let defaultImage: UIImage? = .init(systemName: "photo")?.withRenderingMode(.alwaysOriginal).withTintColor(.systemGray3)
     
     private let imageView: UIImageView = .init().then {
-        $0.contentMode = .scaleAspectFit
+        $0.contentMode = .scaleAspectFill
     }
     
     override init(frame: CGRect) {
@@ -43,10 +43,16 @@ final class SearchCell: UICollectionViewCell {
     }
     
     func configure(imageURLStr: String) {
-        // TODO: implement image loader, fetch image with url
+        ImageService.loadImage(urlStr: imageURLStr) { [weak self] (image, urlStr) in
+            guard urlStr == imageURLStr else { return }
+            DispatchQueue.main.async {
+                self?.imageView.image = image
+            }
+        }
     }
     
     override func prepareForReuse() {
         self.imageView.image = Self.defaultImage
     }
+    
 }
