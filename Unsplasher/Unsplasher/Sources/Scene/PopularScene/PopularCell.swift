@@ -45,11 +45,6 @@ final class PopularCell: UITableViewCell {
         separatorInset = .zero
         preservesSuperviewLayoutMargins = false
         
-        contentView.layer.shadowColor = UIColor.label.cgColor
-        contentView.layer.shadowOffset = .zero
-        contentView.layer.shadowOpacity = 0.5
-        contentView.layer.shadowRadius = 5
-        
         containerView.addSubview(contentImageView)
         containerView.addSubview(titleLabel)
 
@@ -86,6 +81,16 @@ final class PopularCell: UITableViewCell {
     override func prepareForReuse() {
         contentImageView.image = Self.defaultImage
         titleLabel.text = ""
+    }
+    
+    override func layoutSubviews() {
+        super.layoutSubviews()
+        
+        contentView.layer.shadowColor = UIColor.label.cgColor
+        contentView.layer.shadowOffset = .zero
+        contentView.layer.shadowOpacity = 0.5
+        contentView.layer.shadowRadius = 5
+        contentView.layer.shadowPath = UIBezierPath(roundedRect: containerView.frame, cornerRadius: 15).cgPath
     }
     
 }

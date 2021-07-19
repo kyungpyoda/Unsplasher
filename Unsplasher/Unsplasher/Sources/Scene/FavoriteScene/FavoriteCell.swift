@@ -26,14 +26,6 @@ final class FavoriteCell: UICollectionViewCell {
     private func setUp() {
         contentView.backgroundColor = .systemGray5
         
-        contentView.layer.cornerRadius = 15
-        contentView.layer.masksToBounds = true
-        
-        layer.shadowColor = UIColor.label.cgColor
-        layer.shadowOffset = .zero
-        layer.shadowOpacity = 0.5
-        layer.shadowRadius = 5
-        
         contentView.addSubview(imageView)
         imageView.snp.makeConstraints {
             $0.edges.equalToSuperview()
@@ -49,4 +41,18 @@ final class FavoriteCell: UICollectionViewCell {
     override func prepareForReuse() {
         self.imageView.image = Self.defaultImage
     }
+    
+    override func layoutSubviews() {
+        super.layoutSubviews()
+        
+        contentView.layer.cornerRadius = 15
+        contentView.layer.masksToBounds = true
+        
+        layer.shadowColor = UIColor.label.cgColor
+        layer.shadowOffset = .zero
+        layer.shadowOpacity = 0.5
+        layer.shadowRadius = 5
+        layer.shadowPath = UIBezierPath(roundedRect: bounds, cornerRadius: 15).cgPath
+    }
+    
 }
