@@ -85,6 +85,7 @@ final class SearchViewController: UIViewController {
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow), name: UIResponder.keyboardWillShowNotification, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide), name: UIResponder.keyboardWillHideNotification, object: nil)
         let tap = UITapGestureRecognizer(target: view, action: #selector(view.endEditing))
+        tap.cancelsTouchesInView = false
         view.addGestureRecognizer(tap)
     }
     
@@ -146,8 +147,8 @@ extension SearchViewController: UICollectionViewDataSource {
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: SearchCell.reuseIdentifier, for: indexPath) as? SearchCell else {
             return UICollectionViewCell()
         }
-        let item = items[indexPath.row]
-        cell.configure(imageURLStr: item.urls.thumb)
+        let item = items[indexPath.item]
+        cell.configure(imageURLStr: item.urls?.thumb ?? "")
         return cell
     }
 }
@@ -157,7 +158,7 @@ extension SearchViewController: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView,
                         willDisplay cell: UICollectionViewCell,
                         forItemAt indexPath: IndexPath) {
-        guard (indexPath.row == items.count - 1),
+        guard (indexPath.item == items.count - 1),
               !searchedQuery.isEmpty else { return }
         search()
     }

@@ -98,7 +98,7 @@ extension PopularViewController: UITableViewDataSource {
             return UITableViewCell()
         }
         let item = items[indexPath.row]
-        cell.configure(imageURLStr: item.urls.thumb, title: item.description)
+        cell.configure(imageURLStr: item.urls?.thumb ?? "", title: item.desc)
         return cell
     }
     
