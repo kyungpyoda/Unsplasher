@@ -24,6 +24,7 @@
 		D49CAA8A2680796A00B87587 /* UnsplashAPIService.swift in Sources */ = {isa = PBXBuildFile; fileRef = D49CAA892680796A00B87587 /* UnsplashAPIService.swift */; };
 		D49CAA8C268079B000B87587 /* LaunchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D49CAA8B268079B000B87587 /* LaunchViewController.swift */; };
 		D49CAA8E268079DB00B87587 /* MainTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D49CAA8D268079DB00B87587 /* MainTabBarController.swift */; };
+		D49EF3D826A420540034FD8F /* StorageManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D49EF3D726A420540034FD8F /* StorageManager.swift */; };
 		D4A9280B269068DF002B02D7 /* EndpointType.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4A9280A269068DF002B02D7 /* EndpointType.swift */; };
 		D4A9280D26907FF8002B02D7 /* UnsplashEndpoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4A9280C26907FF8002B02D7 /* UnsplashEndpoint.swift */; };
 		D4A9280F26908C2B002B02D7 /* ServiceProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4A9280E26908C2B002B02D7 /* ServiceProvider.swift */; };
@@ -52,6 +53,7 @@
 		D49CAA892680796A00B87587 /* UnsplashAPIService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UnsplashAPIService.swift; sourceTree = "<group>"; };
 		D49CAA8B268079B000B87587 /* LaunchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LaunchViewController.swift; sourceTree = "<group>"; };
 		D49CAA8D268079DB00B87587 /* MainTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabBarController.swift; sourceTree = "<group>"; };
+		D49EF3D726A420540034FD8F /* StorageManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StorageManager.swift; sourceTree = "<group>"; };
 		D4A9280A269068DF002B02D7 /* EndpointType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EndpointType.swift; sourceTree = "<group>"; };
 		D4A9280C26907FF8002B02D7 /* UnsplashEndpoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UnsplashEndpoint.swift; sourceTree = "<group>"; };
 		D4A9280E26908C2B002B02D7 /* ServiceProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServiceProvider.swift; sourceTree = "<group>"; };
@@ -213,6 +215,7 @@
 			children = (
 				D49CAA862680760800B87587 /* NetworkManager.swift */,
 				D4A9280A269068DF002B02D7 /* EndpointType.swift */,
+				D49EF3D726A420540034FD8F /* StorageManager.swift */,
 			);
 			path = Repository;
 			sourceTree = "<group>";
@@ -351,6 +354,7 @@
 				D40016EB2680ECE3003CF521 /* PopularCell.swift in Sources */,
 				D49CAA8E268079DB00B87587 /* MainTabBarController.swift in Sources */,
 				D48CE61D26777A1A000438A7 /* SearchViewController.swift in Sources */,
+				D49EF3D826A420540034FD8F /* StorageManager.swift in Sources */,
 				D40016E92680DE54003CF521 /* Cell+Reusable.swift in Sources */,
 				D48CE62126777A29000438A7 /* FavoriteViewController.swift in Sources */,
 				D49CAA872680760800B87587 /* NetworkManager.swift in Sources */,
