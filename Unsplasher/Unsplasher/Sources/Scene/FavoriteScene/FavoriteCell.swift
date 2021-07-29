@@ -35,7 +35,12 @@ final class FavoriteCell: UICollectionViewCell {
     }
     
     func configure(imageURLStr: String) {
-        // TODO: implement image loader, fetch image with url
+        ImageService.loadImage(urlStr: imageURLStr) { [weak self] (image, urlStr) in
+            guard urlStr == imageURLStr else { return }
+            DispatchQueue.main.async {
+                self?.imageView.image = image
+            }
+        }
     }
     
     override func prepareForReuse() {

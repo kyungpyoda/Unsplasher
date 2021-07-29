@@ -14,6 +14,7 @@ protocol UnsplashAPIServiceType {
                      completion: @escaping (Result<[ImageModel], Error>) -> ()) -> Void
     func getPopulars(page: Int,
                      completion: @escaping (Result<[ImageModel], Error>) -> ()) -> Void
+    func subscribeFavorites(block: @escaping ([ImageModel]) -> Void) -> Void
 }
 
 final class UnsplashAPIService: UnsplashAPIServiceType {
@@ -21,6 +22,8 @@ final class UnsplashAPIService: UnsplashAPIServiceType {
     unowned let provider: ServiceProviderType
     
     private let networkManager: NetworkManager = .init()
+    private let storageManager: StorageManager = .init()
+    
     private let apiKey: String
     
     init(provider: ServiceProviderType) {
@@ -55,6 +58,10 @@ final class UnsplashAPIService: UnsplashAPIServiceType {
                 completion(.failure(error))
             }
         }
+    }
+    
+    func subscribeFavorites(block: @escaping ([ImageModel]) -> Void) {
+        storageManager.subscribe(for: ImageModel.self, block: block)
     }
     
     private func searchRequest(for query: String, page: Int) -> URLRequest {

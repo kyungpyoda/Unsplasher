@@ -70,7 +70,7 @@ final class MainTabBarController: UITabBarController {
                 vc.tabBarItem = tab.tabBarItem
                 return vc
             case .favorite:
-                let vc = FavoriteViewController()
+                let vc = FavoriteViewController(provider: provider)
                 vc.tabBarItem = tab.tabBarItem
                 return vc
             }
