@@ -25,6 +25,8 @@
 		D49CAA8C268079B000B87587 /* LaunchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D49CAA8B268079B000B87587 /* LaunchViewController.swift */; };
 		D49CAA8E268079DB00B87587 /* MainTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D49CAA8D268079DB00B87587 /* MainTabBarController.swift */; };
 		D49EF3D826A420540034FD8F /* StorageManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D49EF3D726A420540034FD8F /* StorageManager.swift */; };
+		D49EF3DC26A586730034FD8F /* DetailVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = D49EF3DB26A586730034FD8F /* DetailVC.swift */; };
+		D49EF3DE26A586F00034FD8F /* POImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D49EF3DD26A586F00034FD8F /* POImageView.swift */; };
 		D4A9280B269068DF002B02D7 /* EndpointType.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4A9280A269068DF002B02D7 /* EndpointType.swift */; };
 		D4A9280D26907FF8002B02D7 /* UnsplashEndpoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4A9280C26907FF8002B02D7 /* UnsplashEndpoint.swift */; };
 		D4A9280F26908C2B002B02D7 /* ServiceProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4A9280E26908C2B002B02D7 /* ServiceProvider.swift */; };
@@ -54,6 +56,7 @@
 		D49CAA8B268079B000B87587 /* LaunchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LaunchViewController.swift; sourceTree = "<group>"; };
 		D49CAA8D268079DB00B87587 /* MainTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabBarController.swift; sourceTree = "<group>"; };
 		D49EF3D726A420540034FD8F /* StorageManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StorageManager.swift; sourceTree = "<group>"; };
+		D49EF3DB26A586730034FD8F /* DetailVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailVC.swift; sourceTree = "<group>"; };
 		D49EF3DD26A586F00034FD8F /* POImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = POImageView.swift; sourceTree = "<group>"; };
 		D4A9280A269068DF002B02D7 /* EndpointType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EndpointType.swift; sourceTree = "<group>"; };
 		D4A9280C26907FF8002B02D7 /* UnsplashEndpoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UnsplashEndpoint.swift; sourceTree = "<group>"; };
@@ -177,6 +180,7 @@
 			children = (
 				D49CAA8B268079B000B87587 /* LaunchViewController.swift */,
 				D49CAA8D268079DB00B87587 /* MainTabBarController.swift */,
+				D49EF3DB26A586730034FD8F /* DetailVC.swift */,
 				D49EF3DD26A586F00034FD8F /* POImageView.swift */,
 				D48CE61926777788000438A7 /* SearchScene */,
 				D48CE61A26777790000438A7 /* PopularScene */,
@@ -353,6 +357,7 @@
 				D40016E72680DDF6003CF521 /* SearchCell.swift in Sources */,
 				D4813AB72688767A0065C27C /* GlobalPropertyService.swift in Sources */,
 				D49EF3DE26A586F00034FD8F /* POImageView.swift in Sources */,
+				D49EF3DC26A586730034FD8F /* DetailVC.swift in Sources */,
 				D48CE61F26777A21000438A7 /* PopularViewController.swift in Sources */,
 				D40016EB2680ECE3003CF521 /* PopularCell.swift in Sources */,
 				D49CAA8E268079DB00B87587 /* MainTabBarController.swift in Sources */,

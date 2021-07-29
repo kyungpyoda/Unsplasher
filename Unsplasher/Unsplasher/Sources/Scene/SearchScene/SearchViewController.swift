@@ -162,6 +162,11 @@ extension SearchViewController: UICollectionViewDelegate {
               !searchedQuery.isEmpty else { return }
         search()
     }
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        let selected = items[indexPath.item]
+        present(DetailVC(imageModel: selected), animated: true, completion: nil)
+    }
 }
 
 // MARK: - SearchBar Delegate

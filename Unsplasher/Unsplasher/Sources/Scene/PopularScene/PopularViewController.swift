@@ -110,4 +110,9 @@ extension PopularViewController: UITableViewDelegate {
         guard (indexPath.row == items.count - 1) else { return }
         getPopulars()
     }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let selected = items[indexPath.item]
+        present(DetailVC(imageModel: selected), animated: true, completion: nil)
+    }
 }

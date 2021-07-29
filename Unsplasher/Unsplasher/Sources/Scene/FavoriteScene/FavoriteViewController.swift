@@ -62,6 +62,7 @@ final class FavoriteViewController: UIViewController {
     private func setUpCollectionView() {
         collectionView.register(FavoriteCell.self, forCellWithReuseIdentifier: FavoriteCell.reuseIdentifier)
         collectionView.dataSource = self
+        collectionView.delegate = self
         
         if let flowLayout = collectionView.collectionViewLayout as? UICollectionViewFlowLayout {
             let itemSize = view.bounds.width / 2 * 0.8
@@ -104,4 +105,13 @@ extension FavoriteViewController: UICollectionViewDataSource {
         return cell
     }
     
+}
+
+// MARK: - CollectionView Delegate
+
+extension FavoriteViewController: UICollectionViewDelegate {
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        let selected = items[indexPath.item]
+        present(DetailVC(imageModel: selected), animated: true, completion: nil)
+    }
 }
