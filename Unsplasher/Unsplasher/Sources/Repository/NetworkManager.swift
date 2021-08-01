@@ -9,9 +9,9 @@ import Foundation
 
 final class NetworkManager {
     
-    let urlSession: URLSession
+    let urlSession: URLSessionType
     
-    init(urlSession: URLSession = .shared) {
+    init(urlSession: URLSessionType = URLSession.shared) {
         self.urlSession = urlSession
     }
     
@@ -31,3 +31,12 @@ final class NetworkManager {
     }
     
 }
+
+protocol URLSessionType {
+    func dataTask(
+        with request: URLRequest,
+        completionHandler: @escaping (Data?, URLResponse?, Error?) -> Void
+    ) -> URLSessionDataTask
+}
+
+extension URLSession: URLSessionType { }
