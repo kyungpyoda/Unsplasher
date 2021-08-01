@@ -34,7 +34,7 @@ final class ImageModel: Object, Codable {
         let container = try decoder.container(keyedBy: CodingKeys.self)
         self.id = try container.decode(String.self, forKey: .id)
         self.desc = try container.decode(String?.self, forKey: .desc)
-        self.urls = try container.decode(ImageURLs.self, forKey: .urls)
+        self.urls = try? container.decode(ImageURLs.self, forKey: .urls)
     }
     
     private enum CodingKeys: String, CodingKey {
