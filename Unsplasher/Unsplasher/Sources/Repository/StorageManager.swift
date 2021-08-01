@@ -8,7 +8,30 @@
 import Foundation
 import RealmSwift
 
-final class StorageManager {
+protocol StorageManagerType {
+    func fetchData<T: Object>(completion: @escaping (Result<[T], Error>) -> ()) -> Void
+    
+    func contains<T: Object>(
+        type: T.Type,
+        key: Any
+    ) -> Bool
+    
+    func read<T: Object>(
+        type: T.Type,
+        key: Any
+    ) -> T?
+    
+    func create(_ object: Object) -> Bool
+    
+    func delete(_ object: Object) -> Bool
+    
+    func subscribe<T: Object>(
+        for type: T.Type,
+        block: @escaping ([T]) -> Void
+    ) -> Void
+}
+
+final class StorageManager: StorageManagerType {
     
     enum StorageError: Error {
         case NoRealm
@@ -17,8 +40,8 @@ final class StorageManager {
     private let realm: Realm?
     private var notificationTokens: [NotificationToken?] = []
     
-    init() {
-        self.realm = try? Realm()
+    init(realm: Realm? = try? Realm()) {
+        self.realm = realm
     }
     
     func fetchData<T: Object>(completion: @escaping (Result<[T], Error>) -> ()) {
@@ -31,11 +54,11 @@ final class StorageManager {
         completion(.success(Array(fetched)))
     }
     
-    func contains<T: Object>(type: T.Type, key: String) -> Bool {
+    func contains<T: Object>(type: T.Type, key: Any) -> Bool {
         return read(type: type, key: key) != nil
     }
     
-    func read<T: Object>(type: T.Type, key: String) -> T? {
+    func read<T: Object>(type: T.Type, key: Any) -> T? {
         return realm?.object(ofType: T.self, forPrimaryKey: key)
     }
     

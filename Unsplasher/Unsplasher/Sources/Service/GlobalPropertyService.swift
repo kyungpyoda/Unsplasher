@@ -30,7 +30,7 @@ final class GlobalPropertyService: GlobalPropertyServiceType {
     /// APIKey 값은 Pods-Unsplasher.debug.xcconfig, Pods-Unsplasher.release.xcconfig 파일 안에 설정
     let apiKey: String
     
-    init() throws {
+    init(isTest: Bool = false) throws {
         guard let infoPlist = Bundle.main.infoDictionary else {
             throw GlobalPropertyError.NoInfoPlist
         }
@@ -39,7 +39,7 @@ final class GlobalPropertyService: GlobalPropertyServiceType {
             throw GlobalPropertyError.NoAPIKey
         }
         
-        apiKey = key
+        apiKey = isTest ? "TestKey" : key
     }
     
 }

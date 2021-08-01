@@ -8,7 +8,6 @@
 import Foundation
 
 protocol UnsplashAPIServiceType {
-    var provider: ServiceProviderType { get }
     func searchImage(query: String,
                      page: Int,
                      completion: @escaping (Result<[ImageModel], Error>) -> ()) -> Void
@@ -19,16 +18,19 @@ protocol UnsplashAPIServiceType {
 
 final class UnsplashAPIService: UnsplashAPIServiceType {
     
-    unowned let provider: ServiceProviderType
-    
-    private let networkManager: NetworkManager = .init()
-    private let storageManager: StorageManager = .init()
+    private let networkManager: NetworkManagerType
+    private let storageManager: StorageManagerType
     
     private let apiKey: String
     
-    init(provider: ServiceProviderType) {
-        self.provider = provider
-        apiKey = provider.globalPropertyService.apiKey
+    init(
+        apiKey: String,
+        networkManager: NetworkManagerType = NetworkManager(),
+        storageManager: StorageManagerType = StorageManager()
+    ) {
+        self.apiKey = apiKey
+        self.networkManager = networkManager
+        self.storageManager = storageManager
     }
     
     func searchImage(query: String,

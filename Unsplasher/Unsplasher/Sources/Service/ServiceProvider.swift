@@ -15,7 +15,7 @@ protocol ServiceProviderType: AnyObject {
 final class ServiceProvider: ServiceProviderType {
     
     let globalPropertyService: GlobalPropertyServiceType
-    lazy var unsplashAPIService: UnsplashAPIServiceType = UnsplashAPIService(provider: self)
+    lazy var unsplashAPIService: UnsplashAPIServiceType = UnsplashAPIService(apiKey: globalPropertyService.apiKey)
     
     init(
         globalPropertyService: GlobalPropertyServiceType

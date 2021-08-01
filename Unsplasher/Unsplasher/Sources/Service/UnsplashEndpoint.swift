@@ -50,4 +50,43 @@ extension UnsplashEndpoint: EndpointType {
         ]
     }
     
+    static var sampleImageModel: Data = .init(
+        """
+        [
+            {
+                "id": "Mock1",
+                "description": "Mock Data 1"
+            },
+            {
+                "id": "Mock2",
+                "description": "Mock Data 2"
+            }
+        ]
+        """.utf8
+    )
+    
+    static var sampleImageSearchModel: Data = .init(
+        """
+        {
+            "total": 2,
+            "total_pages": 1,
+            "results": [
+                {
+                    "id": "Mock1",
+                    "description": "Mock Data 1"
+                },
+                {
+                    "id": "Mock2",
+                    "description": "Mock Data 2"
+                }
+            ]
+        }
+        """.utf8
+    )
+    
+    static var sampleError: NSError = .init(
+        domain: "sampleError",
+        code: 400,
+        userInfo: nil
+    )
 }

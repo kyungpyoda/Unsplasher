@@ -9,5 +9,11 @@ target 'Unsplasher' do
   pod 'SnapKit'
   pod 'Then'
   pod 'RealmSwift'
+  
+  # Pods for UnsplasherTests
+  target 'UnsplasherTests' do
+      inherit! :search_paths
+      pod 'RealmSwift'
+  end
 
 end
