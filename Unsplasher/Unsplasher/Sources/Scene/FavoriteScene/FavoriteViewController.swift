@@ -9,11 +9,29 @@ import UIKit
 
 final class FavoriteViewController: UIViewController {
     
+    private let provider: ServiceProviderType
+    
+    private var items: [ImageModel] = [] {
+        didSet {
+            let isEmpty = items.isEmpty
+            DispatchQueue.main.async { [weak self] in
+                self?.collectionView.backgroundView = isEmpty ? self?.placeHolderView : nil
+            }
+        }
+    }
+    
     private let collectionView: UICollectionView = .init(frame: .zero, collectionViewLayout: UICollectionViewFlowLayout()).then {
         $0.backgroundColor = .systemBackground
     }
+    private let placeHolderView: UIView = UILabel().then {
+        $0.text = "Empty,, 🧐"
+        $0.textColor = .secondaryLabel
+        $0.textAlignment = .center
+        $0.font = .preferredFont(forTextStyle: .title1)
+    }
     
-    init() {
+    init(provider: ServiceProviderType) {
+        self.provider = provider
         super.init(nibName: nil, bundle: nil)
     }
     required init?(coder: NSCoder) {
@@ -23,6 +41,7 @@ final class FavoriteViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setUp()
+        subscribeFavorites()
     }
     
     private func setUp() {
@@ -32,6 +51,7 @@ final class FavoriteViewController: UIViewController {
     
     private func setUpUI() {
         view.backgroundColor = .systemBackground
+        collectionView.backgroundView = placeHolderView
         
         view.addSubview(collectionView)
         collectionView.snp.makeConstraints {
@@ -42,6 +62,7 @@ final class FavoriteViewController: UIViewController {
     private func setUpCollectionView() {
         collectionView.register(FavoriteCell.self, forCellWithReuseIdentifier: FavoriteCell.reuseIdentifier)
         collectionView.dataSource = self
+        collectionView.delegate = self
         
         if let flowLayout = collectionView.collectionViewLayout as? UICollectionViewFlowLayout {
             let itemSize = view.bounds.width / 2 * 0.8
@@ -53,6 +74,17 @@ final class FavoriteViewController: UIViewController {
         }
     }
     
+    private func subscribeFavorites() {
+        provider.unsplashAPIService.subscribeFavorites { [weak self] imageModels in
+            self?.items = imageModels
+            DispatchQueue.main.async {
+                self?.collectionView.performBatchUpdates {
+                    self?.collectionView.reloadData()
+                }
+            }
+        }
+    }
+    
 }
 
 
@@ -61,14 +93,25 @@ final class FavoriteViewController: UIViewController {
 extension FavoriteViewController: UICollectionViewDataSource {
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 10
+        return items.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: FavoriteCell.reuseIdentifier, for: indexPath) as? FavoriteCell else {
             return UICollectionViewCell()
         }
+        let item = items[indexPath.row]
+        cell.configure(imageURLStr: item.urls?.thumb ?? "")
         return cell
     }
     
+}
+
+// MARK: - CollectionView Delegate
+
+extension FavoriteViewController: UICollectionViewDelegate {
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        let selected = items[indexPath.item]
+        present(DetailVC(imageModel: selected), animated: true, completion: nil)
+    }
 }

@@ -42,7 +42,10 @@ final class MainTabBarController: UITabBarController {
         }
     }
     
-    init() {
+    private let provider: ServiceProviderType
+    
+    init(provider: ServiceProviderType) {
+        self.provider = provider
         super.init(nibName: nil, bundle: nil)
     }
     required init?(coder: NSCoder) {
@@ -59,15 +62,15 @@ final class MainTabBarController: UITabBarController {
         let tabs: [UIViewController] = Tab.allCases.map { tab in
             switch tab {
             case .search:
-                let vc = SearchViewController()
+                let vc = SearchViewController(provider: provider)
                 vc.tabBarItem = tab.tabBarItem
                 return vc
             case .popular:
-                let vc = PopularViewController()
+                let vc = PopularViewController(provider: provider)
                 vc.tabBarItem = tab.tabBarItem
                 return vc
             case .favorite:
-                let vc = FavoriteViewController()
+                let vc = FavoriteViewController(provider: provider)
                 vc.tabBarItem = tab.tabBarItem
                 return vc
             }

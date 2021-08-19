@@ -27,8 +27,10 @@ final class LaunchViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         setUp()
-        start()
+        
+        goMain()
     }
     
     private func setUp() {
@@ -43,10 +45,25 @@ final class LaunchViewController: UIViewController {
         }
     }
     
-    private func start() {
-        DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
-            let mainTab = MainTabBarController()
-            AppDelegate.shared?.swapVC(to: mainTab)
+    private func goMain() {
+        do {
+            let globalPropertyService = try GlobalPropertyService()
+            let serviceProvider = ServiceProvider(globalPropertyService: globalPropertyService)
+            
+            DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
+                let mainTab = MainTabBarController(provider: serviceProvider)
+                AppDelegate.shared?.swapVC(to: mainTab)
+            }
+        } catch {
+            let alertVC = UIAlertController(
+                title: "⚠️실행 불가",
+                message: "[\(error) Error]\n\(error.localizedDescription)",
+                preferredStyle: .alert
+            )
+            view.addSubview(alertVC.view)
+            alertVC.view.snp.makeConstraints {
+                $0.center.equalTo(view.safeAreaLayoutGuide)
+            }
         }
     }
     

@@ -17,15 +17,15 @@ final class PopularCell: UITableViewCell {
         $0.layer.masksToBounds = true
     }
     private let contentImageView: UIImageView = .init().then {
-        $0.contentMode = .scaleAspectFit
+        $0.contentMode = .scaleAspectFill
+        $0.layer.cornerRadius = 15
+        $0.layer.masksToBounds = true
         $0.image = defaultImage
     }
-    
     private let titleLabel: UILabel = .init().then {
         $0.numberOfLines = 1
         $0.lineBreakMode = .byTruncatingTail
         $0.font = .preferredFont(forTextStyle: .title3)
-        $0.text = "Some Description Description Description Description"
     }
     
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
@@ -45,18 +45,14 @@ final class PopularCell: UITableViewCell {
         separatorInset = .zero
         preservesSuperviewLayoutMargins = false
         
-        contentView.layer.shadowColor = UIColor.label.cgColor
-        contentView.layer.shadowOffset = .zero
-        contentView.layer.shadowOpacity = 0.5
-        contentView.layer.shadowRadius = 5
-        
         containerView.addSubview(contentImageView)
+        containerView.addSubview(titleLabel)
+
         contentImageView.snp.makeConstraints {
             $0.top.leading.trailing.equalToSuperview()
             $0.height.equalTo(contentImageView.snp.width).multipliedBy(0.75)
+            $0.bottom.equalTo(titleLabel.snp.top)
         }
-        
-        containerView.addSubview(titleLabel)
         titleLabel.snp.makeConstraints {
             $0.top.equalTo(contentImageView.snp.bottom)
             $0.bottom.equalToSuperview()
@@ -72,14 +68,29 @@ final class PopularCell: UITableViewCell {
         }
     }
     
-    func configure(imageURLStr: String, title: String) {
-        titleLabel.text = title
-        // TODO: implement image loader, fetch image with url
+    func configure(imageURLStr: String, title: String?) {
+        titleLabel.text = title ?? "- No Description -"
+        ImageService.loadImage(urlStr: imageURLStr) { [weak self] (image, urlStr) in
+            guard urlStr == imageURLStr else { return }
+            DispatchQueue.main.async {
+                self?.contentImageView.image = image
+            }
+        }
     }
     
     override func prepareForReuse() {
         contentImageView.image = Self.defaultImage
         titleLabel.text = ""
+    }
+    
+    override func layoutSubviews() {
+        super.layoutSubviews()
+        
+        contentView.layer.shadowColor = UIColor.label.cgColor
+        contentView.layer.shadowOffset = .zero
+        contentView.layer.shadowOpacity = 0.5
+        contentView.layer.shadowRadius = 5
+        contentView.layer.shadowPath = UIBezierPath(roundedRect: containerView.frame, cornerRadius: 15).cgPath
     }
     
 }
