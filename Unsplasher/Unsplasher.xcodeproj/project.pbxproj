@@ -15,6 +15,11 @@
 		D4691B2826B69AF7000F0C12 /* MockURLSession.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4691B2726B69AF7000F0C12 /* MockURLSession.swift */; };
 		D4691B2A26B6A49C000F0C12 /* NetworkManagerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4691B2926B6A49C000F0C12 /* NetworkManagerTests.swift */; };
 		D4691B2C26B6B058000F0C12 /* UnsplashAPIServiceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4691B2B26B6B058000F0C12 /* UnsplashAPIServiceTests.swift */; };
+		D4710FCA27F9711B00B62117 /* ReactorKit in Frameworks */ = {isa = PBXBuildFile; productRef = D4710FC927F9711B00B62117 /* ReactorKit */; };
+		D4710FCF27F974E400B62117 /* RxBlocking in Frameworks */ = {isa = PBXBuildFile; productRef = D4710FCE27F974E400B62117 /* RxBlocking */; };
+		D4710FD127F974E400B62117 /* RxCocoa in Frameworks */ = {isa = PBXBuildFile; productRef = D4710FD027F974E400B62117 /* RxCocoa */; };
+		D4710FD327F974E400B62117 /* RxRelay in Frameworks */ = {isa = PBXBuildFile; productRef = D4710FD227F974E400B62117 /* RxRelay */; };
+		D4710FD527F974E400B62117 /* RxSwift in Frameworks */ = {isa = PBXBuildFile; productRef = D4710FD427F974E400B62117 /* RxSwift */; };
 		D47B749627F70975008246A5 /* Then in Frameworks */ = {isa = PBXBuildFile; productRef = D47B749527F70975008246A5 /* Then */; };
 		D47B749927F70991008246A5 /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = D47B749827F70991008246A5 /* SnapKit */; };
 		D47B749C27F70AE4008246A5 /* Realm in Frameworks */ = {isa = PBXBuildFile; productRef = D47B749B27F70AE4008246A5 /* Realm */; };
@@ -100,9 +105,14 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D4710FD527F974E400B62117 /* RxSwift in Frameworks */,
 				D47B749E27F70AE4008246A5 /* RealmSwift in Frameworks */,
+				D4710FCF27F974E400B62117 /* RxBlocking in Frameworks */,
 				D47B749C27F70AE4008246A5 /* Realm in Frameworks */,
+				D4710FD127F974E400B62117 /* RxCocoa in Frameworks */,
 				D47B749627F70975008246A5 /* Then in Frameworks */,
+				D4710FCA27F9711B00B62117 /* ReactorKit in Frameworks */,
+				D4710FD327F974E400B62117 /* RxRelay in Frameworks */,
 				D47B749927F70991008246A5 /* SnapKit in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -316,6 +326,11 @@
 				D47B749827F70991008246A5 /* SnapKit */,
 				D47B749B27F70AE4008246A5 /* Realm */,
 				D47B749D27F70AE4008246A5 /* RealmSwift */,
+				D4710FC927F9711B00B62117 /* ReactorKit */,
+				D4710FCE27F974E400B62117 /* RxBlocking */,
+				D4710FD027F974E400B62117 /* RxCocoa */,
+				D4710FD227F974E400B62117 /* RxRelay */,
+				D4710FD427F974E400B62117 /* RxSwift */,
 			);
 			productName = Unsplasher;
 			productReference = D48CE60126777545000438A7 /* Unsplasher.app */;
@@ -352,6 +367,8 @@
 				D47B749427F70975008246A5 /* XCRemoteSwiftPackageReference "Then" */,
 				D47B749727F70991008246A5 /* XCRemoteSwiftPackageReference "SnapKit" */,
 				D47B749A27F70AE4008246A5 /* XCRemoteSwiftPackageReference "realm-swift" */,
+				D4710FC827F9711B00B62117 /* XCRemoteSwiftPackageReference "ReactorKit" */,
+				D4710FCD27F974E400B62117 /* XCRemoteSwiftPackageReference "RxSwift" */,
 			);
 			productRefGroup = D48CE60226777545000438A7 /* Products */;
 			projectDirPath = "";
@@ -675,6 +692,22 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
+		D4710FC827F9711B00B62117 /* XCRemoteSwiftPackageReference "ReactorKit" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/ReactorKit/ReactorKit";
+			requirement = {
+				kind = exactVersion;
+				version = 3.2.0;
+			};
+		};
+		D4710FCD27F974E400B62117 /* XCRemoteSwiftPackageReference "RxSwift" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/ReactiveX/RxSwift";
+			requirement = {
+				kind = exactVersion;
+				version = 6.5.0;
+			};
+		};
 		D47B749427F70975008246A5 /* XCRemoteSwiftPackageReference "Then" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/devxoul/Then";
@@ -702,6 +735,31 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
+		D4710FC927F9711B00B62117 /* ReactorKit */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = D4710FC827F9711B00B62117 /* XCRemoteSwiftPackageReference "ReactorKit" */;
+			productName = ReactorKit;
+		};
+		D4710FCE27F974E400B62117 /* RxBlocking */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = D4710FCD27F974E400B62117 /* XCRemoteSwiftPackageReference "RxSwift" */;
+			productName = RxBlocking;
+		};
+		D4710FD027F974E400B62117 /* RxCocoa */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = D4710FCD27F974E400B62117 /* XCRemoteSwiftPackageReference "RxSwift" */;
+			productName = RxCocoa;
+		};
+		D4710FD227F974E400B62117 /* RxRelay */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = D4710FCD27F974E400B62117 /* XCRemoteSwiftPackageReference "RxSwift" */;
+			productName = RxRelay;
+		};
+		D4710FD427F974E400B62117 /* RxSwift */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = D4710FCD27F974E400B62117 /* XCRemoteSwiftPackageReference "RxSwift" */;
+			productName = RxSwift;
+		};
 		D47B749527F70975008246A5 /* Then */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = D47B749427F70975008246A5 /* XCRemoteSwiftPackageReference "Then" */;
