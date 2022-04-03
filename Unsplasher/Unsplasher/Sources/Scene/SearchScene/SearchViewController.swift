@@ -7,34 +7,63 @@
 
 import UIKit
 
+import RxSwift
+import RxCocoa
+import ReactorKit
+
 final class SearchViewController: UIViewController {
     
-    // MARK: - Properties
-    private let provider: ServiceProviderType
+    // MARK: - Constants
     
-    private var nextPage: Int = 1
-    private var searchedQuery: String = ""
-    private var items: [ImageModel] = [] {
-        didSet {
-            let isEmpty = items.isEmpty
-            DispatchQueue.main.async { [weak self] in
-                self?.collectionView.backgroundView = isEmpty ? self?.noResultsView : nil
-            }
-        }
+    enum ImageListSection {
+        case main
     }
+    private typealias ImageListDataSource = UICollectionViewDiffableDataSource<ImageListSection, ImageModel>
+    private typealias ImageListSnapshot = NSDiffableDataSourceSnapshot<ImageListSection, ImageModel>
+    
+    // MARK: - Properties
+    
+    var disposeBag: DisposeBag = DisposeBag()
     
     // MARK: - Views
+    
     private let searchBar: UISearchBar = .init().then {
         $0.placeholder = "Search"
     }
-    private let collectionView: UICollectionView = .init(frame: .zero, collectionViewLayout: UICollectionViewFlowLayout()).then {
+    private lazy var imageCollectionView: UICollectionView = .init(
+        frame: .zero,
+        collectionViewLayout: collectionViewLayout
+    ).then {
         $0.backgroundColor = .systemBackground
+        $0.register(SearchCell.self, forCellWithReuseIdentifier: SearchCell.reuseIdentifier)
+        $0.keyboardDismissMode = .onDrag
     }
-    private let placeHolderView: UIView = UILabel().then {
-        $0.text = "Search anything. 🥸"
-        $0.textColor = .secondaryLabel
-        $0.textAlignment = .center
-        $0.font = .preferredFont(forTextStyle: .title1)
+    private let collectionViewLayout: UICollectionViewLayout = {
+        let itemSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(0.5),
+                                              heightDimension: .fractionalHeight(1.0))
+        let item = NSCollectionLayoutItem(layoutSize: itemSize)
+        item.contentInsets = .init(top: 10, leading: 10, bottom: 10, trailing: 10)
+        
+        let groupSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1.0),
+                                               heightDimension: .fractionalWidth(0.5))
+        let group = NSCollectionLayoutGroup.horizontal(layoutSize: groupSize,
+                                                       subitems: [item])
+        let section = NSCollectionLayoutSection(group: group)
+        
+        let layout = UICollectionViewCompositionalLayout(section: section)
+        return layout
+    }()
+    private lazy var dataSource: ImageListDataSource = ImageListDataSource(
+        collectionView: imageCollectionView
+    ) { [weak self] collectionView, indexPath, imageModel in
+        let cell = collectionView.dequeueReusableCell(
+            withReuseIdentifier: SearchCell.reuseIdentifier,
+            for: indexPath
+        )
+        guard let listCell = cell as? SearchCell else { return cell }
+        
+        listCell.configure(imageURLStr: imageModel.urls?.thumb ?? "")
+        return listCell
     }
     private let noResultsView: UIView = UILabel().then {
         $0.text = "No results found. 😅"
@@ -44,145 +73,135 @@ final class SearchViewController: UIViewController {
     }
     
     // MARK: - Initialize
-    init(provider: ServiceProviderType) {
-        self.provider = provider
+    
+    init(reactor: SearchViewReactor) {
         super.init(nibName: nil, bundle: nil)
+        self.reactor = reactor
     }
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
     
     // MARK: - Life Cycle
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         setUp()
     }
     
     // MARK: - Set up
+    
     private func setUp() {
         setUpUI()
-        setUpSearchHandling()
-        setUpCollectionView()
+        setUpKeyboardHandler()
     }
     
     private func setUpUI() {
         view.backgroundColor = .systemBackground
-        collectionView.backgroundView = placeHolderView
         
         view.addSubview(searchBar)
+        view.addSubview(imageCollectionView)
+        imageCollectionView.addSubview(noResultsView)
+        
         searchBar.snp.makeConstraints {
             $0.top.leading.trailing.equalTo(self.view.safeAreaLayoutGuide)
         }
-        view.addSubview(collectionView)
-        collectionView.snp.makeConstraints {
+        imageCollectionView.snp.makeConstraints {
             $0.top.equalTo(searchBar.snp.bottom)
             $0.bottom.leading.trailing.equalTo(self.view.safeAreaLayoutGuide)
         }
+        noResultsView.snp.makeConstraints {
+            $0.center.equalToSuperview()
+        }
     }
     
-    private func setUpSearchHandling() {
-        searchBar.delegate = self
-        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow), name: UIResponder.keyboardWillShowNotification, object: nil)
-        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide), name: UIResponder.keyboardWillHideNotification, object: nil)
+    private func setUpKeyboardHandler() {
+        NotificationCenter.default.addObserver(
+            self,
+            selector: #selector(keyboardWillShow),
+            name: UIResponder.keyboardWillShowNotification,
+            object: nil
+        )
+        NotificationCenter.default.addObserver(
+            self,
+            selector: #selector(keyboardWillHide),
+            name: UIResponder.keyboardWillHideNotification,
+            object: nil
+        )
         let tap = UITapGestureRecognizer(target: view, action: #selector(view.endEditing))
         tap.cancelsTouchesInView = false
         view.addGestureRecognizer(tap)
     }
     
-    private func setUpCollectionView() {
-        collectionView.register(SearchCell.self, forCellWithReuseIdentifier: SearchCell.reuseIdentifier)
-        collectionView.dataSource = self
-        collectionView.delegate = self
-        collectionView.keyboardDismissMode = .onDrag
-        if let flowLayout = collectionView.collectionViewLayout as? UICollectionViewFlowLayout {
-            let itemSize = view.bounds.width / 2 * 0.8
-            let spacing = (view.bounds.width - itemSize * 2) / 3
-            flowLayout.itemSize = .init(width: itemSize, height: itemSize)
-            flowLayout.sectionInset = .init(top: spacing / 2, left: spacing, bottom: spacing / 2, right: spacing)
-            flowLayout.minimumLineSpacing = spacing
-            flowLayout.minimumInteritemSpacing = 0
-        }
-    }
-    
-    // MARK: - Methods
-    private func search() {
-        print("Search: \(searchedQuery), Page: \(nextPage)")
-        provider.unsplashAPIService.searchImage(query: searchedQuery, page: nextPage) { [weak self] result in
-            switch result {
-            case .success(let imageModels):
-                let thisPage = self?.nextPage ?? 1
-                if !imageModels.isEmpty { self?.nextPage += 1 }
-                guard thisPage > 1 else {
-                    self?.items = imageModels
-                    DispatchQueue.main.async {
-                        self?.collectionView.setContentOffset(.zero, animated: false)
-                        self?.collectionView.reloadData()
-                    }
-                    return
-                }
-                let beforeCount = self?.items.count ?? 0
-                self?.items += imageModels
-                let newIndices = (0..<imageModels.count).map { IndexPath(row: beforeCount + $0, section: 0) }
-                DispatchQueue.main.async {
-                    self?.collectionView.performBatchUpdates {
-                        self?.collectionView.insertItems(at: newIndices)
-                    }
-                }
-                
-            case .failure(let error):
-                debugPrint(error.localizedDescription as Any)
-            }
-        }
-    }
-    
 }
 
-// MARK: - CollectionView DataSource
-extension SearchViewController: UICollectionViewDataSource {
-    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return items.count
+// MARK: - Bind Reactor
+
+extension SearchViewController: View {
+    func bind(reactor: SearchViewReactor) {
+        bindAction(reactor: reactor)
+        bindState(reactor: reactor)
     }
     
-    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: SearchCell.reuseIdentifier, for: indexPath) as? SearchCell else {
-            return UICollectionViewCell()
-        }
-        let item = items[indexPath.item]
-        cell.configure(imageURLStr: item.urls?.thumb ?? "")
-        return cell
-    }
-}
-
-// MARK: - CollectionView Delegate
-extension SearchViewController: UICollectionViewDelegate {
-    func collectionView(_ collectionView: UICollectionView,
-                        willDisplay cell: UICollectionViewCell,
-                        forItemAt indexPath: IndexPath) {
-        guard (indexPath.item == items.count - 1),
-              !searchedQuery.isEmpty else { return }
-        search()
-    }
-    
-    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        let selected = items[indexPath.item]
-        present(DetailVC(imageModel: selected), animated: true, completion: nil)
-    }
-}
-
-// MARK: - SearchBar Delegate
-extension SearchViewController: UISearchBarDelegate {
-    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
-        guard let textInput = searchBar.text,
-              !textInput.isEmpty else { return }
+    private func bindAction(reactor: SearchViewReactor) {
+        searchBar.rx.text.orEmpty
+            .map { Reactor.Action.inputQuery($0) }
+            .bind(to: reactor.action)
+            .disposed(by: disposeBag)
         
-        searchBar.endEditing(true)
-        searchedQuery = textInput
-        nextPage = 1
-        search()
+        searchBar.rx.searchButtonClicked
+            .withLatestFrom(searchBar.rx.text.orEmpty)
+            .map { Reactor.Action.search(query: $0) }
+            .bind(to: reactor.action)
+            .disposed(by: disposeBag)
+        
+        imageCollectionView.rx.willDisplayCell
+            .filter { cell, index in index.item >= (reactor.currentState.imageModels.count - 1) }
+            .map { _ in Reactor.Action.loadNextPage }
+            .bind(to: reactor.action)
+            .disposed(by: disposeBag)
+        
+        imageCollectionView.rx.itemSelected
+            .withLatestFrom(reactor.state.map(\.imageModels)) { selectedIndexPath, imageModels in
+                return imageModels[selectedIndexPath.item]
+            }
+            .subscribe(onNext: { [weak self] selectedItem in
+                self?.present(DetailVC(imageModel: selectedItem), animated: true, completion: nil)
+            })
+            .disposed(by: disposeBag)
+    }
+    
+    private func bindState(reactor: SearchViewReactor) {
+        reactor
+            .pulse(\.$dataSourceUpdate)
+            .compactMap { $0 }
+            .observe(on: MainScheduler.instance)
+            .subscribe(onNext: { [weak self] updateType, imageModels in
+                guard let self = self else { return }
+                
+                switch updateType {
+                case .reset:
+                    var snapshot = ImageListSnapshot()
+                    snapshot.appendSections([.main])
+                    snapshot.appendItems(imageModels, toSection: .main)
+                    self.dataSource.apply(snapshot)
+                    if !imageModels.isEmpty {
+                        self.imageCollectionView.scrollToItem(at: .init(item: 0, section: 0), at: .top, animated: true)
+                    }
+                    self.noResultsView.isHidden = !imageModels.isEmpty
+                    
+                case .append:
+                    var snapshot = self.dataSource.snapshot()
+                    snapshot.appendItems(imageModels, toSection: .main)
+                    self.dataSource.apply(snapshot)
+                }
+            })
+            .disposed(by: disposeBag)
     }
 }
 
 // MARK: - Handle Keyboard Noti
+
 extension SearchViewController {
     @objc private func keyboardWillShow(notification: Notification) {
         guard let info = notification.userInfo,
@@ -191,10 +210,9 @@ extension SearchViewController {
               let curve = info[UIResponder.keyboardAnimationCurveUserInfoKey] as? UInt else {
             return
         }
-        collectionView.snp.updateConstraints {
-            $0.bottom.equalTo(self.view.safeAreaLayoutGuide).inset(size.cgRectValue.height)
+        imageCollectionView.snp.updateConstraints {
+            $0.bottom.equalTo(self.view.safeAreaLayoutGuide).inset(size.cgRectValue.height - self.view.safeAreaInsets.bottom)
         }
-        self.view.layoutIfNeeded()
         UIView.animate(withDuration: duration, delay: 0, options: UIView.AnimationOptions.init(rawValue: curve), animations: { [weak self] in
             self?.view.layoutIfNeeded()
         })
@@ -206,10 +224,9 @@ extension SearchViewController {
               let curve = info[UIResponder.keyboardAnimationCurveUserInfoKey] as? UInt else {
             return
         }
-        collectionView.snp.updateConstraints {
+        imageCollectionView.snp.updateConstraints {
             $0.bottom.equalTo(self.view.safeAreaLayoutGuide).inset(0)
         }
-        view.layoutIfNeeded()
         UIView.animate(withDuration: duration, delay: 0, options: UIView.AnimationOptions.init(rawValue: curve), animations: { [weak self] in
             self?.view.layoutIfNeeded()
         })

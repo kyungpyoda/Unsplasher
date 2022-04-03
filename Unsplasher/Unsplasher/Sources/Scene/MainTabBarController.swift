@@ -62,7 +62,8 @@ final class MainTabBarController: UITabBarController {
         let tabs: [UIViewController] = Tab.allCases.map { tab in
             switch tab {
             case .search:
-                let vc = SearchViewController(provider: provider)
+                let reactor = SearchViewReactor(serviceProvider: provider)
+                let vc = SearchViewController(reactor: reactor)
                 vc.tabBarItem = tab.tabBarItem
                 return vc
             case .popular:
