@@ -72,7 +72,8 @@ final class MainTabBarController: UITabBarController {
                 vc.tabBarItem = tab.tabBarItem
                 return vc
             case .favorite:
-                let vc = FavoriteViewController(provider: provider)
+                let reactor = FavoriteViewReactor(serviceProvider: provider)
+                let vc = FavoriteViewController(reactor: reactor)
                 vc.tabBarItem = tab.tabBarItem
                 return vc
             }
