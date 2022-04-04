@@ -7,21 +7,24 @@
 
 import UIKit
 
+import RxSwift
+import RxCocoa
+import ReactorKit
+
 final class PopularViewController: UIViewController {
     
-    private let provider: ServiceProviderType
+    var disposeBag: DisposeBag = DisposeBag()
     
-    private var nextPage: Int = 1
-    private var items: [ImageModel] = []
-    
-    private let tableView: UITableView = .init().then {
+    private lazy var imageTableView: UITableView = .init().then {
         $0.backgroundColor = .systemBackground
         $0.separatorStyle = .none
+        $0.register(PopularCell.self, forCellReuseIdentifier: PopularCell.reuseIdentifier)
+        $0.dataSource = self
     }
     
-    init(provider: ServiceProviderType) {
-        self.provider = provider
+    init(reactor: PopularViewReactor) {
         super.init(nibName: nil, bundle: nil)
+        self.reactor = reactor
     }
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
@@ -30,59 +33,61 @@ final class PopularViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setUp()
-        getPopulars()
     }
     
     private func setUp() {
         setUpUI()
-        setUpTableView()
     }
     
     private func setUpUI() {
         view.backgroundColor = .systemBackground
         
-        view.addSubview(tableView)
-        tableView.snp.makeConstraints {
+        view.addSubview(imageTableView)
+        imageTableView.snp.makeConstraints {
             $0.edges.equalTo(self.view.safeAreaLayoutGuide)
         }
     }
-    
-    private func setUpTableView() {
-        tableView.register(PopularCell.self, forCellReuseIdentifier: PopularCell.reuseIdentifier)
-        tableView.dataSource = self
-        tableView.delegate = self
+}
+
+// MARK: Bind Reactor
+
+extension PopularViewController: View {
+    func bind(reactor: PopularViewReactor) {
+        bindAction(reactor: reactor)
+        bindState(reactor: reactor)
     }
     
-    private func getPopulars() {
-        print("Page: \(nextPage)")
-        provider.unsplashAPIService.getPopulars(page: nextPage) { [weak self] result in
-            switch result {
-            case .success(let imageModels):
-                let thisPage = self?.nextPage ?? 1
-                if !imageModels.isEmpty { self?.nextPage += 1 }
-                guard thisPage > 1 else {
-                    self?.items = imageModels
-                    DispatchQueue.main.async {
-                        self?.tableView.setContentOffset(.zero, animated: false)
-                        self?.tableView.reloadData()
-                    }
-                    return
-                }
-                let beforeCount = self?.items.count ?? 0
-                self?.items += imageModels
-                let newIndices = (0..<imageModels.count).map { IndexPath(row: beforeCount + $0, section: 0) }
-                DispatchQueue.main.async {
-                    self?.tableView.performBatchUpdates {
-                        self?.tableView.insertRows(at: newIndices, with: .automatic)
-                    }
-                }
-                
-            case .failure(let error):
-                debugPrint(error.localizedDescription as Any)
+    private func bindAction(reactor: PopularViewReactor) {
+        Observable.just(())
+            .map { Reactor.Action.loadNextPage }
+            .bind(to: reactor.action)
+            .disposed(by: disposeBag)
+        
+        imageTableView.rx.willDisplayCell
+            .filter { cell, index in index.item >= (reactor.currentState.imageModels.count - 1) }
+            .map { _ in Reactor.Action.loadNextPage }
+            .bind(to: reactor.action)
+            .disposed(by: disposeBag)
+        
+        imageTableView.rx.itemSelected
+            .withLatestFrom(reactor.state.map(\.imageModels)) { selectedIndexPath, imageModels in
+                return imageModels[selectedIndexPath.item]
             }
-        }
+            .subscribe(onNext: { [weak self] selectedItem in
+                self?.present(DetailVC(imageModel: selectedItem), animated: true, completion: nil)
+            })
+            .disposed(by: disposeBag)
     }
     
+    private func bindState(reactor: PopularViewReactor) {
+        reactor
+            .pulse(\.$imageModels)
+            .observe(on: MainScheduler.instance)
+            .subscribe(onNext: { [weak self] _ in
+                self?.imageTableView.reloadData()
+            })
+            .disposed(by: disposeBag)
+    }
 }
 
 // MARK: - TableView DataSource
@@ -90,29 +95,18 @@ final class PopularViewController: UIViewController {
 extension PopularViewController: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return items.count
+        return reactor?.currentState.imageModels.count ?? 0
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: PopularCell.reuseIdentifier, for: indexPath) as? PopularCell else {
             return UITableViewCell()
         }
-        let item = items[indexPath.row]
-        cell.configure(imageURLStr: item.urls?.thumb ?? "", title: item.desc)
+        
+        if let item = reactor?.currentState.imageModels[indexPath.row] {
+            cell.configure(imageURLStr: item.urls?.thumb ?? "", title: item.desc)
+        }
         return cell
     }
     
-}
-
-// MARK: - TableView Delegate
-extension PopularViewController: UITableViewDelegate {
-    func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
-        guard (indexPath.row == items.count - 1) else { return }
-        getPopulars()
-    }
-    
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let selected = items[indexPath.item]
-        present(DetailVC(imageModel: selected), animated: true, completion: nil)
-    }
 }

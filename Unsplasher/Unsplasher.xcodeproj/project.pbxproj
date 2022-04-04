@@ -21,6 +21,7 @@
 		D4710FD127F974E400B62117 /* RxCocoa in Frameworks */ = {isa = PBXBuildFile; productRef = D4710FD027F974E400B62117 /* RxCocoa */; };
 		D4710FD327F974E400B62117 /* RxRelay in Frameworks */ = {isa = PBXBuildFile; productRef = D4710FD227F974E400B62117 /* RxRelay */; };
 		D4710FD527F974E400B62117 /* RxSwift in Frameworks */ = {isa = PBXBuildFile; productRef = D4710FD427F974E400B62117 /* RxSwift */; };
+		D4710FD727F9A54600B62117 /* PopularViewReactor.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4710FD627F9A54600B62117 /* PopularViewReactor.swift */; };
 		D47B749627F70975008246A5 /* Then in Frameworks */ = {isa = PBXBuildFile; productRef = D47B749527F70975008246A5 /* Then */; };
 		D47B749927F70991008246A5 /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = D47B749827F70991008246A5 /* SnapKit */; };
 		D47B749C27F70AE4008246A5 /* Realm in Frameworks */ = {isa = PBXBuildFile; productRef = D47B749B27F70AE4008246A5 /* Realm */; };
@@ -68,6 +69,7 @@
 		D4691B2926B6A49C000F0C12 /* NetworkManagerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManagerTests.swift; sourceTree = "<group>"; };
 		D4691B2B26B6B058000F0C12 /* UnsplashAPIServiceTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UnsplashAPIServiceTests.swift; sourceTree = "<group>"; };
 		D4710FCB27F9740C00B62117 /* SearchViewReactor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewReactor.swift; sourceTree = "<group>"; };
+		D4710FD627F9A54600B62117 /* PopularViewReactor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopularViewReactor.swift; sourceTree = "<group>"; };
 		D479C82F26B5114D00A9A8DC /* UnsplasherTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = UnsplasherTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		D479C83326B5114D00A9A8DC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		D4813AB62688767A0065C27C /* GlobalPropertyService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GlobalPropertyService.swift; sourceTree = "<group>"; };
@@ -254,6 +256,7 @@
 			isa = PBXGroup;
 			children = (
 				D48CE61E26777A21000438A7 /* PopularViewController.swift */,
+				D4710FD627F9A54600B62117 /* PopularViewReactor.swift */,
 				D40016EA2680ECE3003CF521 /* PopularCell.swift */,
 			);
 			path = PopularScene;
@@ -436,6 +439,7 @@
 				D48CE62126777A29000438A7 /* FavoriteViewController.swift in Sources */,
 				D49CAA872680760800B87587 /* NetworkManager.swift in Sources */,
 				D4A9280F26908C2B002B02D7 /* ServiceProvider.swift in Sources */,
+				D4710FD727F9A54600B62117 /* PopularViewReactor.swift in Sources */,
 				D4A928112690D678002B02D7 /* ImageService.swift in Sources */,
 				D49068822686E02C00316379 /* FavoriteCell.swift in Sources */,
 				D49CAA8C268079B000B87587 /* LaunchViewController.swift in Sources */,
