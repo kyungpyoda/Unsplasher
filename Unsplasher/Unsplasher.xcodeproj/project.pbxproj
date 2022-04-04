@@ -126,12 +126,12 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		D40016E22680CD6D003CF521 /* Common */ = {
+		D40016E22680CD6D003CF521 /* Util */ = {
 			isa = PBXGroup;
 			children = (
 				D40016E32680CD9E003CF521 /* Extension */,
 			);
-			path = Common;
+			path = Util;
 			sourceTree = "<group>";
 		};
 		D40016E32680CD9E003CF521 /* Extension */ = {
@@ -149,6 +149,22 @@
 				D4907A2B26C7C1BD00717A12 /* MockNetworkManager.swift */,
 			);
 			path = Mock;
+			sourceTree = "<group>";
+		};
+		D4710FDD27FA8BCC00B62117 /* DetailScene */ = {
+			isa = PBXGroup;
+			children = (
+				D49EF3DB26A586730034FD8F /* DetailVC.swift */,
+			);
+			path = DetailScene;
+			sourceTree = "<group>";
+		};
+		D4710FDE27FA8BF000B62117 /* Common */ = {
+			isa = PBXGroup;
+			children = (
+				D49EF3DD26A586F00034FD8F /* POImageView.swift */,
+			);
+			path = Common;
 			sourceTree = "<group>";
 		};
 		D479C83026B5114D00A9A8DC /* UnsplasherTests */ = {
@@ -186,10 +202,10 @@
 				D48CE60F26777546000438A7 /* LaunchScreen.storyboard */,
 				D48CE60426777545000438A7 /* AppDelegate.swift */,
 				D48CE61826777723000438A7 /* Scene */,
+				D40016E22680CD6D003CF521 /* Util */,
 				D48B87AF268A333A00461E0D /* Model */,
 				D49CAA882680762600B87587 /* Service */,
 				D49CAA85268075C900B87587 /* Repository */,
-				D40016E22680CD6D003CF521 /* Common */,
 			);
 			path = Sources;
 			sourceTree = "<group>";
@@ -235,11 +251,11 @@
 			children = (
 				D49CAA8B268079B000B87587 /* LaunchViewController.swift */,
 				D49CAA8D268079DB00B87587 /* MainTabBarController.swift */,
-				D49EF3DB26A586730034FD8F /* DetailVC.swift */,
-				D49EF3DD26A586F00034FD8F /* POImageView.swift */,
 				D48CE61926777788000438A7 /* SearchScene */,
 				D48CE61A26777790000438A7 /* PopularScene */,
 				D48CE61B267779E9000438A7 /* FavoriteScene */,
+				D4710FDD27FA8BCC00B62117 /* DetailScene */,
+				D4710FDE27FA8BF000B62117 /* Common */,
 			);
 			path = Scene;
 			sourceTree = "<group>";
