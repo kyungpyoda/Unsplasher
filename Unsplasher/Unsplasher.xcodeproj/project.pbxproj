@@ -23,6 +23,7 @@
 		D4710FD527F974E400B62117 /* RxSwift in Frameworks */ = {isa = PBXBuildFile; productRef = D4710FD427F974E400B62117 /* RxSwift */; };
 		D4710FD727F9A54600B62117 /* PopularViewReactor.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4710FD627F9A54600B62117 /* PopularViewReactor.swift */; };
 		D4710FDC27FA863800B62117 /* FavoriteViewReactor.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4710FDB27FA863800B62117 /* FavoriteViewReactor.swift */; };
+		D4710FE027FA944A00B62117 /* DetailViewReactor.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4710FDF27FA944A00B62117 /* DetailViewReactor.swift */; };
 		D47B749627F70975008246A5 /* Then in Frameworks */ = {isa = PBXBuildFile; productRef = D47B749527F70975008246A5 /* Then */; };
 		D47B749927F70991008246A5 /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = D47B749827F70991008246A5 /* SnapKit */; };
 		D47B749C27F70AE4008246A5 /* Realm in Frameworks */ = {isa = PBXBuildFile; productRef = D47B749B27F70AE4008246A5 /* Realm */; };
@@ -42,7 +43,7 @@
 		D49CAA8C268079B000B87587 /* LaunchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D49CAA8B268079B000B87587 /* LaunchViewController.swift */; };
 		D49CAA8E268079DB00B87587 /* MainTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D49CAA8D268079DB00B87587 /* MainTabBarController.swift */; };
 		D49EF3D826A420540034FD8F /* StorageManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D49EF3D726A420540034FD8F /* StorageManager.swift */; };
-		D49EF3DC26A586730034FD8F /* DetailVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = D49EF3DB26A586730034FD8F /* DetailVC.swift */; };
+		D49EF3DC26A586730034FD8F /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D49EF3DB26A586730034FD8F /* DetailViewController.swift */; };
 		D49EF3DE26A586F00034FD8F /* POImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D49EF3DD26A586F00034FD8F /* POImageView.swift */; };
 		D4A9280B269068DF002B02D7 /* EndpointType.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4A9280A269068DF002B02D7 /* EndpointType.swift */; };
 		D4A9280D26907FF8002B02D7 /* UnsplashEndpoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4A9280C26907FF8002B02D7 /* UnsplashEndpoint.swift */; };
@@ -72,6 +73,7 @@
 		D4710FCB27F9740C00B62117 /* SearchViewReactor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewReactor.swift; sourceTree = "<group>"; };
 		D4710FD627F9A54600B62117 /* PopularViewReactor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopularViewReactor.swift; sourceTree = "<group>"; };
 		D4710FDB27FA863800B62117 /* FavoriteViewReactor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteViewReactor.swift; sourceTree = "<group>"; };
+		D4710FDF27FA944A00B62117 /* DetailViewReactor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewReactor.swift; sourceTree = "<group>"; };
 		D479C82F26B5114D00A9A8DC /* UnsplasherTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = UnsplasherTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		D479C83326B5114D00A9A8DC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		D4813AB62688767A0065C27C /* GlobalPropertyService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GlobalPropertyService.swift; sourceTree = "<group>"; };
@@ -91,7 +93,7 @@
 		D49CAA8B268079B000B87587 /* LaunchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LaunchViewController.swift; sourceTree = "<group>"; };
 		D49CAA8D268079DB00B87587 /* MainTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabBarController.swift; sourceTree = "<group>"; };
 		D49EF3D726A420540034FD8F /* StorageManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StorageManager.swift; sourceTree = "<group>"; };
-		D49EF3DB26A586730034FD8F /* DetailVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailVC.swift; sourceTree = "<group>"; };
+		D49EF3DB26A586730034FD8F /* DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
 		D49EF3DD26A586F00034FD8F /* POImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = POImageView.swift; sourceTree = "<group>"; };
 		D4A9280A269068DF002B02D7 /* EndpointType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EndpointType.swift; sourceTree = "<group>"; };
 		D4A9280C26907FF8002B02D7 /* UnsplashEndpoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UnsplashEndpoint.swift; sourceTree = "<group>"; };
@@ -154,7 +156,8 @@
 		D4710FDD27FA8BCC00B62117 /* DetailScene */ = {
 			isa = PBXGroup;
 			children = (
-				D49EF3DB26A586730034FD8F /* DetailVC.swift */,
+				D49EF3DB26A586730034FD8F /* DetailViewController.swift */,
+				D4710FDF27FA944A00B62117 /* DetailViewReactor.swift */,
 			);
 			path = DetailScene;
 			sourceTree = "<group>";
@@ -448,11 +451,12 @@
 				D40016E72680DDF6003CF521 /* SearchCell.swift in Sources */,
 				D4813AB72688767A0065C27C /* GlobalPropertyService.swift in Sources */,
 				D49EF3DE26A586F00034FD8F /* POImageView.swift in Sources */,
-				D49EF3DC26A586730034FD8F /* DetailVC.swift in Sources */,
+				D49EF3DC26A586730034FD8F /* DetailViewController.swift in Sources */,
 				D4710FDC27FA863800B62117 /* FavoriteViewReactor.swift in Sources */,
 				D48CE61F26777A21000438A7 /* PopularViewController.swift in Sources */,
 				D40016EB2680ECE3003CF521 /* PopularCell.swift in Sources */,
 				D49CAA8E268079DB00B87587 /* MainTabBarController.swift in Sources */,
+				D4710FE027FA944A00B62117 /* DetailViewReactor.swift in Sources */,
 				D48CE61D26777A1A000438A7 /* SearchViewController.swift in Sources */,
 				D49EF3D826A420540034FD8F /* StorageManager.swift in Sources */,
 				D40016E92680DE54003CF521 /* Cell+Reusable.swift in Sources */,

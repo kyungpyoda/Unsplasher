@@ -14,6 +14,8 @@ protocol UnsplashAPIServiceType {
     func getPopulars(page: Int,
                      completion: @escaping (Result<[ImageModel], Error>) -> ()) -> Void
     func subscribeFavorites(block: @escaping ([ImageModel]) -> Void) -> Void
+    func toggleFavorite(of imageModel: ImageModel) -> (ImageModel, Bool)
+    func checkImageIsFavorite(_ imageModel: ImageModel) -> Bool
 }
 
 final class UnsplashAPIService: UnsplashAPIServiceType {
@@ -64,6 +66,27 @@ final class UnsplashAPIService: UnsplashAPIServiceType {
     
     func subscribeFavorites(block: @escaping ([ImageModel]) -> Void) {
         storageManager.subscribe(for: ImageModel.self, block: block)
+    }
+    
+    func toggleFavorite(of imageModel: ImageModel) -> (ImageModel, Bool) {
+        if let stored = storageManager.read(type: ImageModel.self, key: imageModel.id) {
+            let temp = ImageModel(value: imageModel)
+            if storageManager.delete(stored) {
+                return (temp, false)
+            } else {
+                return (imageModel, true)
+            }
+        } else {
+            if storageManager.create(imageModel) {
+                return (imageModel, true)
+            } else {
+                return (imageModel, false)
+            }
+        }
+    }
+    
+    func checkImageIsFavorite(_ imageModel: ImageModel) -> Bool {
+        return storageManager.read(type: ImageModel.self, key: imageModel.id) != nil
     }
     
     private func searchRequest(for query: String, page: Int) -> URLRequest {

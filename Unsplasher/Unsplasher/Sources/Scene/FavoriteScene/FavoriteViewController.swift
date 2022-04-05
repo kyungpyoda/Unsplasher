@@ -88,11 +88,10 @@ extension FavoriteViewController: View {
             .disposed(by: disposeBag)
         
         imageCollectionView.rx.itemSelected
-            .withLatestFrom(reactor.state.map(\.imageModels)) { selectedIndexPath, imageModels in
-                return imageModels[selectedIndexPath.item]
-            }
-            .subscribe(onNext: { [weak self] selectedItem in
-                self?.present(DetailVC(imageModel: selectedItem), animated: true, completion: nil)
+            .subscribe(onNext: { [weak self] selectedIndexPath in
+                if let reactor = self?.reactor?.makeDetailViewReactor(for: selectedIndexPath) {
+                    self?.present(DetailViewController(reactor: reactor), animated: true, completion: nil)
+                }
             })
             .disposed(by: disposeBag)
     }

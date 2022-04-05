@@ -142,5 +142,10 @@ final class SearchViewReactor: Reactor {
         
         return newState
     }
+    
+    func makeDetailViewReactor(for selectedIndexPath: IndexPath) -> DetailViewReactor {
+        let selectedItem = currentState.imageModels[selectedIndexPath.item]
+        return DetailViewReactor(serviceProvider: serviceProvider, imageModel: selectedItem)
+    }
 }
 
