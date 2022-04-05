@@ -204,21 +204,19 @@
 			children = (
 				D48CE60F26777546000438A7 /* LaunchScreen.storyboard */,
 				D48CE60426777545000438A7 /* AppDelegate.swift */,
-				D48CE61826777723000438A7 /* Scene */,
-				D40016E22680CD6D003CF521 /* Util */,
-				D48B87AF268A333A00461E0D /* Model */,
-				D49CAA882680762600B87587 /* Service */,
-				D49CAA85268075C900B87587 /* Repository */,
+				D4EFDFE827FBD3AD00A4F114 /* Presentation */,
+				D4EFDFE927FBD3BF00A4F114 /* Domain */,
+				D4EFDFEA27FBD3C600A4F114 /* Data */,
 			);
 			path = Sources;
 			sourceTree = "<group>";
 		};
-		D48B87AF268A333A00461E0D /* Model */ = {
+		D48B87AF268A333A00461E0D /* Entity */ = {
 			isa = PBXGroup;
 			children = (
 				D42B15E02690F0FA00238CEF /* ImageModel.swift */,
 			);
-			path = Model;
+			path = Entity;
 			sourceTree = "<group>";
 		};
 		D48CE5F826777545000438A7 = {
@@ -296,14 +294,11 @@
 		D49CAA85268075C900B87587 /* Repository */ = {
 			isa = PBXGroup;
 			children = (
-				D49CAA862680760800B87587 /* NetworkManager.swift */,
-				D4A9280A269068DF002B02D7 /* EndpointType.swift */,
-				D49EF3D726A420540034FD8F /* StorageManager.swift */,
 			);
 			path = Repository;
 			sourceTree = "<group>";
 		};
-		D49CAA882680762600B87587 /* Service */ = {
+		D49CAA882680762600B87587 /* UseCase */ = {
 			isa = PBXGroup;
 			children = (
 				D4A9280E26908C2B002B02D7 /* ServiceProvider.swift */,
@@ -312,7 +307,52 @@
 				D4A928102690D678002B02D7 /* ImageService.swift */,
 				D4A9280C26907FF8002B02D7 /* UnsplashEndpoint.swift */,
 			);
-			path = Service;
+			path = UseCase;
+			sourceTree = "<group>";
+		};
+		D4EFDFE827FBD3AD00A4F114 /* Presentation */ = {
+			isa = PBXGroup;
+			children = (
+				D48CE61826777723000438A7 /* Scene */,
+				D40016E22680CD6D003CF521 /* Util */,
+			);
+			path = Presentation;
+			sourceTree = "<group>";
+		};
+		D4EFDFE927FBD3BF00A4F114 /* Domain */ = {
+			isa = PBXGroup;
+			children = (
+				D48B87AF268A333A00461E0D /* Entity */,
+				D49CAA882680762600B87587 /* UseCase */,
+			);
+			path = Domain;
+			sourceTree = "<group>";
+		};
+		D4EFDFEA27FBD3C600A4F114 /* Data */ = {
+			isa = PBXGroup;
+			children = (
+				D49CAA85268075C900B87587 /* Repository */,
+				D4EFDFEB27FBD4C600A4F114 /* Network */,
+				D4EFDFEC27FBD4D100A4F114 /* Database */,
+			);
+			path = Data;
+			sourceTree = "<group>";
+		};
+		D4EFDFEB27FBD4C600A4F114 /* Network */ = {
+			isa = PBXGroup;
+			children = (
+				D4A9280A269068DF002B02D7 /* EndpointType.swift */,
+				D49CAA862680760800B87587 /* NetworkManager.swift */,
+			);
+			path = Network;
+			sourceTree = "<group>";
+		};
+		D4EFDFEC27FBD4D100A4F114 /* Database */ = {
+			isa = PBXGroup;
+			children = (
+				D49EF3D726A420540034FD8F /* StorageManager.swift */,
+			);
+			path = Database;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
