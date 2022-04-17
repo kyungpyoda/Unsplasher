@@ -1,13 +1,5 @@
-# Created by https://www.toptal.com/developers/gitignore/api/macos,xcode,swift,cocoapods
-# Edit at https://www.toptal.com/developers/gitignore?templates=macos,xcode,swift,cocoapods
-
-### CocoaPods ###
-## CocoaPods GitIgnore Template
-
-# CocoaPods - Only use to conserve bandwidth / Save time on Pushing
-#           - Also handy if you have a large number of dependant pods
-#           - AS PER https://guides.cocoapods.org/using/using-cocoapods.html NEVER IGNORE THE LOCK FILE
-Pods/
+# Created by https://www.toptal.com/developers/gitignore/api/macos,xcode,swift
+# Edit at https://www.toptal.com/developers/gitignore?templates=macos,xcode,swift
 
 ### macOS ###
 # General
@@ -101,9 +93,9 @@ playground.xcworkspace
 
 Carthage/Build/
 
-# Add this lines if you are using Accio dependency management (Deprecated since Xcode 12)
-# Dependencies/
-# .accio/
+# Accio dependency management
+Dependencies/
+.accio/
 
 # fastlane
 # It is recommended to not store the screenshots in the git repo.
@@ -123,20 +115,22 @@ fastlane/test_output
 iOSInjectionProject/
 
 ### Xcode ###
-# Xcode
-# gitignore contributors: remember to update Global/Xcode.gitignore, Objective-C.gitignore & Swift.gitignore
 
-
-
-
-## Gcc Patch
-/*.gcno
+## Xcode 8 and earlier
 
 ### Xcode Patch ###
 *.xcodeproj/*
 !*.xcodeproj/project.pbxproj
 !*.xcodeproj/xcshareddata/
 !*.xcworkspace/contents.xcworkspacedata
+/*.gcno
 **/xcshareddata/WorkspaceSettings.xcsettings
 
-# End of https://www.toptal.com/developers/gitignore/api/macos,xcode,swift,cocoapods
+# End of https://www.toptal.com/developers/gitignore/api/macos,xcode,swift
+
+
+# Tuist
+graph.dot
+Derived/
+*.xcodeproj
+*.xcworkspace
