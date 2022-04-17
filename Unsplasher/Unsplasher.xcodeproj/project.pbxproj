@@ -10,6 +10,14 @@
 		D40016E72680DDF6003CF521 /* SearchCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D40016E62680DDF6003CF521 /* SearchCell.swift */; };
 		D40016E92680DE54003CF521 /* Cell+Reusable.swift in Sources */ = {isa = PBXBuildFile; fileRef = D40016E82680DE54003CF521 /* Cell+Reusable.swift */; };
 		D40016EB2680ECE3003CF521 /* PopularCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D40016EA2680ECE3003CF521 /* PopularCell.swift */; };
+		D4035D3B280C05A50078DE1F /* NetworkConfigurable.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4035D3A280C05A50078DE1F /* NetworkConfigurable.swift */; };
+		D4035D3D280C05D80078DE1F /* HTTPHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4035D3C280C05D80078DE1F /* HTTPHeader.swift */; };
+		D4035D41280C061C0078DE1F /* AnyEncodable.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4035D40280C061C0078DE1F /* AnyEncodable.swift */; };
+		D4035D43280C06300078DE1F /* NetworkManagerError.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4035D42280C06300078DE1F /* NetworkManagerError.swift */; };
+		D4035D45280C06620078DE1F /* ParameterEncoding.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4035D44280C06620078DE1F /* ParameterEncoding.swift */; };
+		D4035D47280C06750078DE1F /* URLSessionType.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4035D46280C06750078DE1F /* URLSessionType.swift */; };
+		D4035D49280C06DC0078DE1F /* NetworkCancellable.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4035D48280C06DC0078DE1F /* NetworkCancellable.swift */; };
+		D4035D4B280C07B10078DE1F /* AppConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4035D4A280C07B10078DE1F /* AppConfiguration.swift */; };
 		D42B15E12690F0FA00238CEF /* ImageModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D42B15E02690F0FA00238CEF /* ImageModel.swift */; };
 		D45D933026B83EF50024D0A8 /* GlobalPropertyServiceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = D45D932F26B83EF50024D0A8 /* GlobalPropertyServiceTests.swift */; };
 		D4691B2826B69AF7000F0C12 /* MockURLSession.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4691B2726B69AF7000F0C12 /* MockURLSession.swift */; };
@@ -28,7 +36,6 @@
 		D47B749927F70991008246A5 /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = D47B749827F70991008246A5 /* SnapKit */; };
 		D47B749C27F70AE4008246A5 /* Realm in Frameworks */ = {isa = PBXBuildFile; productRef = D47B749B27F70AE4008246A5 /* Realm */; };
 		D47B749E27F70AE4008246A5 /* RealmSwift in Frameworks */ = {isa = PBXBuildFile; productRef = D47B749D27F70AE4008246A5 /* RealmSwift */; };
-		D4813AB72688767A0065C27C /* GlobalPropertyService.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4813AB62688767A0065C27C /* GlobalPropertyService.swift */; };
 		D48CE60526777545000438A7 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D48CE60426777545000438A7 /* AppDelegate.swift */; };
 		D48CE60E26777546000438A7 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D48CE60D26777546000438A7 /* Assets.xcassets */; };
 		D48CE61126777546000438A7 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D48CE60F26777546000438A7 /* LaunchScreen.storyboard */; };
@@ -65,6 +72,14 @@
 		D40016E62680DDF6003CF521 /* SearchCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchCell.swift; sourceTree = "<group>"; };
 		D40016E82680DE54003CF521 /* Cell+Reusable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Cell+Reusable.swift"; sourceTree = "<group>"; };
 		D40016EA2680ECE3003CF521 /* PopularCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopularCell.swift; sourceTree = "<group>"; };
+		D4035D3A280C05A50078DE1F /* NetworkConfigurable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkConfigurable.swift; sourceTree = "<group>"; };
+		D4035D3C280C05D80078DE1F /* HTTPHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HTTPHeader.swift; sourceTree = "<group>"; };
+		D4035D40280C061C0078DE1F /* AnyEncodable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnyEncodable.swift; sourceTree = "<group>"; };
+		D4035D42280C06300078DE1F /* NetworkManagerError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManagerError.swift; sourceTree = "<group>"; };
+		D4035D44280C06620078DE1F /* ParameterEncoding.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ParameterEncoding.swift; sourceTree = "<group>"; };
+		D4035D46280C06750078DE1F /* URLSessionType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URLSessionType.swift; sourceTree = "<group>"; };
+		D4035D48280C06DC0078DE1F /* NetworkCancellable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkCancellable.swift; sourceTree = "<group>"; };
+		D4035D4A280C07B10078DE1F /* AppConfiguration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppConfiguration.swift; sourceTree = "<group>"; };
 		D42B15E02690F0FA00238CEF /* ImageModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageModel.swift; sourceTree = "<group>"; };
 		D45D932F26B83EF50024D0A8 /* GlobalPropertyServiceTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GlobalPropertyServiceTests.swift; sourceTree = "<group>"; };
 		D4691B2726B69AF7000F0C12 /* MockURLSession.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockURLSession.swift; sourceTree = "<group>"; };
@@ -76,7 +91,6 @@
 		D4710FDF27FA944A00B62117 /* DetailViewReactor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewReactor.swift; sourceTree = "<group>"; };
 		D479C82F26B5114D00A9A8DC /* UnsplasherTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = UnsplasherTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		D479C83326B5114D00A9A8DC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		D4813AB62688767A0065C27C /* GlobalPropertyService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GlobalPropertyService.swift; sourceTree = "<group>"; };
 		D48CE60126777545000438A7 /* Unsplasher.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Unsplasher.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D48CE60426777545000438A7 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		D48CE60D26777546000438A7 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -204,6 +218,7 @@
 			children = (
 				D48CE60F26777546000438A7 /* LaunchScreen.storyboard */,
 				D48CE60426777545000438A7 /* AppDelegate.swift */,
+				D4035D4A280C07B10078DE1F /* AppConfiguration.swift */,
 				D4EFDFE827FBD3AD00A4F114 /* Presentation */,
 				D4EFDFE927FBD3BF00A4F114 /* Domain */,
 				D4EFDFEA27FBD3C600A4F114 /* Data */,
@@ -302,7 +317,6 @@
 			isa = PBXGroup;
 			children = (
 				D4A9280E26908C2B002B02D7 /* ServiceProvider.swift */,
-				D4813AB62688767A0065C27C /* GlobalPropertyService.swift */,
 				D49CAA892680796A00B87587 /* UnsplashAPIService.swift */,
 				D4A928102690D678002B02D7 /* ImageService.swift */,
 				D4A9280C26907FF8002B02D7 /* UnsplashEndpoint.swift */,
@@ -342,6 +356,13 @@
 			isa = PBXGroup;
 			children = (
 				D4A9280A269068DF002B02D7 /* EndpointType.swift */,
+				D4035D40280C061C0078DE1F /* AnyEncodable.swift */,
+				D4035D3C280C05D80078DE1F /* HTTPHeader.swift */,
+				D4035D44280C06620078DE1F /* ParameterEncoding.swift */,
+				D4035D48280C06DC0078DE1F /* NetworkCancellable.swift */,
+				D4035D46280C06750078DE1F /* URLSessionType.swift */,
+				D4035D42280C06300078DE1F /* NetworkManagerError.swift */,
+				D4035D3A280C05A50078DE1F /* NetworkConfigurable.swift */,
 				D49CAA862680760800B87587 /* NetworkManager.swift */,
 			);
 			path = Network;
@@ -489,12 +510,15 @@
 				D49CAA8A2680796A00B87587 /* UnsplashAPIService.swift in Sources */,
 				D4A9280D26907FF8002B02D7 /* UnsplashEndpoint.swift in Sources */,
 				D40016E72680DDF6003CF521 /* SearchCell.swift in Sources */,
-				D4813AB72688767A0065C27C /* GlobalPropertyService.swift in Sources */,
 				D49EF3DE26A586F00034FD8F /* POImageView.swift in Sources */,
 				D49EF3DC26A586730034FD8F /* DetailViewController.swift in Sources */,
 				D4710FDC27FA863800B62117 /* FavoriteViewReactor.swift in Sources */,
+				D4035D41280C061C0078DE1F /* AnyEncodable.swift in Sources */,
 				D48CE61F26777A21000438A7 /* PopularViewController.swift in Sources */,
+				D4035D3D280C05D80078DE1F /* HTTPHeader.swift in Sources */,
+				D4035D45280C06620078DE1F /* ParameterEncoding.swift in Sources */,
 				D40016EB2680ECE3003CF521 /* PopularCell.swift in Sources */,
+				D4035D43280C06300078DE1F /* NetworkManagerError.swift in Sources */,
 				D49CAA8E268079DB00B87587 /* MainTabBarController.swift in Sources */,
 				D4710FE027FA944A00B62117 /* DetailViewReactor.swift in Sources */,
 				D48CE61D26777A1A000438A7 /* SearchViewController.swift in Sources */,
@@ -502,6 +526,10 @@
 				D40016E92680DE54003CF521 /* Cell+Reusable.swift in Sources */,
 				D48CE62126777A29000438A7 /* FavoriteViewController.swift in Sources */,
 				D49CAA872680760800B87587 /* NetworkManager.swift in Sources */,
+				D4035D4B280C07B10078DE1F /* AppConfiguration.swift in Sources */,
+				D4035D49280C06DC0078DE1F /* NetworkCancellable.swift in Sources */,
+				D4035D47280C06750078DE1F /* URLSessionType.swift in Sources */,
+				D4035D3B280C05A50078DE1F /* NetworkConfigurable.swift in Sources */,
 				D4A9280F26908C2B002B02D7 /* ServiceProvider.swift in Sources */,
 				D4710FD727F9A54600B62117 /* PopularViewReactor.swift in Sources */,
 				D4A928112690D678002B02D7 /* ImageService.swift in Sources */,
@@ -708,6 +736,8 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
+				UNSPLASH_ACCESS_KEY = "";
+				UNSPLASH_BASE_URL = "";
 			};
 			name = Debug;
 		};
@@ -728,6 +758,8 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
+				UNSPLASH_ACCESS_KEY = "";
+				UNSPLASH_BASE_URL = "";
 			};
 			name = Release;
 		};

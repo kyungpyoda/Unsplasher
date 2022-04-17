@@ -8,19 +8,17 @@
 import Foundation
 
 protocol ServiceProviderType: AnyObject {
-    var globalPropertyService: GlobalPropertyServiceType { get }
     var unsplashAPIService: UnsplashAPIServiceType { get }
 }
 
 final class ServiceProvider: ServiceProviderType {
     
-    let globalPropertyService: GlobalPropertyServiceType
-    lazy var unsplashAPIService: UnsplashAPIServiceType = UnsplashAPIService(apiKey: globalPropertyService.apiKey)
+    let unsplashAPIService: UnsplashAPIServiceType
     
     init(
-        globalPropertyService: GlobalPropertyServiceType
+        unsplashAPIService: UnsplashAPIServiceType
     ) {
-        self.globalPropertyService = globalPropertyService
+        self.unsplashAPIService = unsplashAPIService
     }
     
 }

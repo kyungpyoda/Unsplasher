@@ -23,14 +23,10 @@ final class UnsplashAPIService: UnsplashAPIServiceType {
     private let networkManager: NetworkManagerType
     private let storageManager: StorageManagerType
     
-    private let apiKey: String
-    
     init(
-        apiKey: String,
-        networkManager: NetworkManagerType = NetworkManager(),
-        storageManager: StorageManagerType = StorageManager()
+        networkManager: NetworkManagerType,
+        storageManager: StorageManagerType
     ) {
-        self.apiKey = apiKey
         self.networkManager = networkManager
         self.storageManager = storageManager
     }
@@ -38,9 +34,8 @@ final class UnsplashAPIService: UnsplashAPIServiceType {
     func searchImage(query: String,
                      page: Int = 1,
                      completion: @escaping (Result<[ImageModel], Error>) -> ()) {
-        let request = searchRequest(for: query, page: page)
-        
-        networkManager.fetchData(urlRequest: request) { (result: Result<ImageSearchModel?, Error>) in
+        let endpoint = UnsplashEndpoint.search(query: query, page: page)
+        _ = networkManager.fetchData(from: endpoint) { (result: Result<ImageSearchModel?, Error>) in
             switch result {
             case .success(let responseData):
                 completion(.success(responseData?.results ?? []))
@@ -51,10 +46,9 @@ final class UnsplashAPIService: UnsplashAPIServiceType {
     }
     
     func getPopulars(page: Int = 1,
-                      completion: @escaping (Result<[ImageModel], Error>) -> ()) {
-        let request = getPopularsRequest(page: page)
-        
-        networkManager.fetchData(urlRequest: request) { (result: Result<[ImageModel]?, Error>) in
+                     completion: @escaping (Result<[ImageModel], Error>) -> ()) {
+        let endpoint = UnsplashEndpoint.getPopular(page: page)
+        _ = networkManager.fetchData(from: endpoint) { (result: Result<[ImageModel]?, Error>) in
             switch result {
             case .success(let responseData):
                 completion(.success(responseData ?? []))
@@ -87,20 +81,6 @@ final class UnsplashAPIService: UnsplashAPIServiceType {
     
     func checkImageIsFavorite(_ imageModel: ImageModel) -> Bool {
         return storageManager.read(type: ImageModel.self, key: imageModel.id) != nil
-    }
-    
-    private func searchRequest(for query: String, page: Int) -> URLRequest {
-        let endpoint = UnsplashEndpoint.search(query: query, page: page)
-        var request = endpoint.urlRequest
-        request.setValue("Client-ID \(apiKey)", forHTTPHeaderField: "Authorization")
-        return request
-    }
-    
-    private func getPopularsRequest(page: Int) -> URLRequest {
-        let endpoint = UnsplashEndpoint.getPopular(page: page)
-        var request = endpoint.urlRequest
-        request.setValue("Client-ID \(apiKey)", forHTTPHeaderField: "Authorization")
-        return request
     }
     
 }

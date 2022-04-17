@@ -46,24 +46,22 @@ final class LaunchViewController: UIViewController {
     }
     
     private func goMain() {
-        do {
-            let globalPropertyService = try GlobalPropertyService()
-            let serviceProvider = ServiceProvider(globalPropertyService: globalPropertyService)
-            
-            DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
-                let mainTab = MainTabBarController(provider: serviceProvider)
-                AppDelegate.shared?.swapVC(to: mainTab)
-            }
-        } catch {
-            let alertVC = UIAlertController(
-                title: "⚠️실행 불가",
-                message: "[\(error) Error]\n\(error.localizedDescription)",
-                preferredStyle: .alert
-            )
-            view.addSubview(alertVC.view)
-            alertVC.view.snp.makeConstraints {
-                $0.center.equalTo(view.safeAreaLayoutGuide)
-            }
+        let apiConfig = APINetworkConfig(
+            baseURL: AppConfiguration.apiBaseURL,
+            headers: [
+                HTTPHeaderKey.authorization.rawValue: AppConfiguration.apiKey
+            ]
+        )
+        let networkManager = NetworkManager(config: apiConfig)
+        let unsplashAPIService = UnsplashAPIService(
+            networkManager: networkManager,
+            storageManager: StorageManager()
+        )
+        let serviceProvider = ServiceProvider(unsplashAPIService: unsplashAPIService)
+        
+        DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
+            let mainTab = MainTabBarController(provider: serviceProvider)
+            AppDelegate.shared?.swapVC(to: mainTab)
         }
     }
     

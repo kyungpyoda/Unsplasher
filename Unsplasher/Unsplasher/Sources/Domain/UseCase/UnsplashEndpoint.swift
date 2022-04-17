@@ -13,11 +13,6 @@ enum UnsplashEndpoint {
 }
 
 extension UnsplashEndpoint: EndpointType {
-    
-    var baseURL: URL {
-        return URL(string: "https://api.unsplash.com")!
-    }
-    
     var path: String {
         switch self {
         case .search:
@@ -37,56 +32,16 @@ extension UnsplashEndpoint: EndpointType {
     var httpTask: HTTPTask {
         switch self {
         case let .search(query, page):
-            return (nil, ["query": query, "page": page])
+            return .requestParameters(encoding: URLEncoding.default, parameters: ["query": query, "page": page])
             
         case let .getPopular(page):
-            return (nil, ["order_by": "popular", "page": page])
+            return .requestParameters(encoding: URLEncoding.default, parameters: ["order_by": "popular", "page": page])
         }
     }
     
     var headers: HTTPHeaders? {
         return [
-            "Content-Type": "application/json",
+            HTTPHeaderKey.contentType.rawValue: HTTPHeaderValue.jsonContent.rawValue
         ]
     }
-    
-    static var sampleImageModel: Data = .init(
-        """
-        [
-            {
-                "id": "Mock1",
-                "description": "Mock Data 1"
-            },
-            {
-                "id": "Mock2",
-                "description": "Mock Data 2"
-            }
-        ]
-        """.utf8
-    )
-    
-    static var sampleImageSearchModel: Data = .init(
-        """
-        {
-            "total": 2,
-            "total_pages": 1,
-            "results": [
-                {
-                    "id": "Mock1",
-                    "description": "Mock Data 1"
-                },
-                {
-                    "id": "Mock2",
-                    "description": "Mock Data 2"
-                }
-            ]
-        }
-        """.utf8
-    )
-    
-    static var sampleError: NSError = .init(
-        domain: "sampleError",
-        code: 400,
-        userInfo: nil
-    )
 }

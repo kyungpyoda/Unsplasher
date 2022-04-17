@@ -2,8 +2,10 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
+	<key>UnsplashBaseURL</key>
+	<string>$(UNSPLASH_BASE_URL)</string>
 	<key>UnsplashAPIKey</key>
-	<string>$(UnsplashAccessKey)</string>
+	<string>$(UNSPLASH_ACCESS_KEY)</string>
 	<key>CFBundleDevelopmentRegion</key>
 	<string>$(DEVELOPMENT_LANGUAGE)</string>
 	<key>CFBundleExecutable</key>
