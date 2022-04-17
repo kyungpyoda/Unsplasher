@@ -64,7 +64,7 @@ extension PopularViewController: View {
             .disposed(by: disposeBag)
         
         imageTableView.rx.willDisplayCell
-            .filter { cell, index in index.item >= (reactor.currentState.imageModels.count - 1) }
+            .filter { cell, index in index.item >= (reactor.currentState.usImages.count - 1) }
             .map { _ in Reactor.Action.loadNextPage }
             .bind(to: reactor.action)
             .disposed(by: disposeBag)
@@ -80,7 +80,7 @@ extension PopularViewController: View {
     
     private func bindState(reactor: PopularViewReactor) {
         reactor
-            .pulse(\.$imageModels)
+            .pulse(\.$usImages)
             .observe(on: MainScheduler.instance)
             .subscribe(onNext: { [weak self] _ in
                 self?.imageTableView.reloadData()
@@ -94,7 +94,7 @@ extension PopularViewController: View {
 extension PopularViewController: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return reactor?.currentState.imageModels.count ?? 0
+        return reactor?.currentState.usImages.count ?? 0
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -102,7 +102,7 @@ extension PopularViewController: UITableViewDataSource {
             return UITableViewCell()
         }
         
-        if let item = reactor?.currentState.imageModels[indexPath.row] {
+        if let item = reactor?.currentState.usImages[indexPath.row] {
             cell.configure(imageURLStr: item.urls?.thumb ?? "", title: item.desc)
         }
         return cell

@@ -17,42 +17,33 @@ final class FavoriteViewReactor: Reactor {
     }
     
     enum Mutation {
-        case setImageModels(with: [ImageModel])
+        case setImages(with: [USImage])
     }
     
     struct State {
-        @Pulse var imageModels: [ImageModel]
+        @Pulse var usImages: [USImage]
     }
     
     let initialState: State
     
     // MARK: Dependency
     
-    private let serviceProvider: ServiceProviderType
+    private let favoriteImageUseCase: FavoriteImageUseCase
     
     init(
-        serviceProvider: ServiceProviderType
+        favoriteImageUseCase: FavoriteImageUseCase
     ) {
         self.initialState = State(
-            imageModels: []
+            usImages: []
         )
-        self.serviceProvider = serviceProvider
+        self.favoriteImageUseCase = favoriteImageUseCase
     }
     
     func mutate(action: Action) -> Observable<Mutation> {
         switch action {
         case .subscribeFavorites:
-            return Observable<[ImageModel]>.create { [weak self] observer in
-                if let self = self {
-                    self.serviceProvider.unsplashAPIService.subscribeFavorites { imageModels in
-                        observer.onNext(imageModels)
-                    }
-                } else {
-                    observer.onCompleted()
-                }
-                
-                return Disposables.create()
-            }.map { Mutation.setImageModels(with: $0) }
+            return favoriteImageUseCase.subscribeFavorites()
+                .map { Mutation.setImages(with: $0) }
         }
     }
     
@@ -60,15 +51,18 @@ final class FavoriteViewReactor: Reactor {
         var newState = state
         
         switch mutation {
-        case let .setImageModels(imageModels):
-            newState.imageModels = imageModels
+        case let .setImages(usImages):
+            newState.usImages = usImages
         }
         
         return newState
     }
     
     func makeDetailViewReactor(for selectedIndexPath: IndexPath) -> DetailViewReactor {
-        let selectedItem = currentState.imageModels[selectedIndexPath.item]
-        return DetailViewReactor(serviceProvider: serviceProvider, imageModel: selectedItem)
+        let selectedItem = currentState.usImages[selectedIndexPath.item]
+        let storageManager = StorageManager()
+        let favoriteImageRepository = DefaultFavoriteImageRepository(storageManager: storageManager)
+        let favoriteImageUseCase = DefaultFavoriteImageUseCase(favoriteImageRepository: favoriteImageRepository)
+        return DetailViewReactor(favoriteImageUseCase: favoriteImageUseCase, usImage: selectedItem)
     }
 }

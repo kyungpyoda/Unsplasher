@@ -98,12 +98,12 @@ extension FavoriteViewController: View {
     
     private func bindState(reactor: FavoriteViewReactor) {
         reactor
-            .pulse(\.$imageModels)
+            .pulse(\.$usImages)
             .observe(on: MainScheduler.instance)
-            .subscribe(onNext: { [weak self] imageModels in
+            .subscribe(onNext: { [weak self] usImages in
                 self?.imageCollectionView.reloadData()
                 
-                self?.placeHolderView.isHidden = !imageModels.isEmpty
+                self?.placeHolderView.isHidden = !usImages.isEmpty
             })
             .disposed(by: disposeBag)
     }
@@ -114,7 +114,7 @@ extension FavoriteViewController: View {
 extension FavoriteViewController: UICollectionViewDataSource {
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return reactor?.currentState.imageModels.count ?? 0
+        return reactor?.currentState.usImages.count ?? 0
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
@@ -122,7 +122,7 @@ extension FavoriteViewController: UICollectionViewDataSource {
             return UICollectionViewCell()
         }
         
-        if let item = reactor?.currentState.imageModels[indexPath.row] {
+        if let item = reactor?.currentState.usImages[indexPath.row] {
             cell.configure(imageURLStr: item.urls?.thumb ?? "")
         }
         return cell

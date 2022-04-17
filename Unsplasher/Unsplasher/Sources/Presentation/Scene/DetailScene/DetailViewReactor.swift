@@ -17,12 +17,11 @@ final class DetailViewReactor: Reactor {
     }
     
     enum Mutation {
-        case setImageModel(to: ImageModel)
         case setIsFavorite(to: Bool)
     }
     
     struct State {
-        @Pulse var imageModel: ImageModel
+        @Pulse var usImage: USImage
         @Pulse var isFavorite: Bool
     }
     
@@ -30,33 +29,24 @@ final class DetailViewReactor: Reactor {
     
     // MARK: Dependency
     
-    private let serviceProvider: ServiceProviderType
+    private let favoriteImageUseCase: FavoriteImageUseCase
     
     init(
-        serviceProvider: ServiceProviderType,
-        imageModel: ImageModel
+        favoriteImageUseCase: FavoriteImageUseCase,
+        usImage: USImage
     ) {
-        let unmanaged = ImageModel(value: imageModel)
         self.initialState = State(
-            imageModel: unmanaged,
-            isFavorite: serviceProvider.unsplashAPIService.checkImageIsFavorite(imageModel)
+            usImage: usImage,
+            isFavorite: favoriteImageUseCase.checkImageIsFavorite(usImage)
         )
-        self.serviceProvider = serviceProvider
+        self.favoriteImageUseCase = favoriteImageUseCase
     }
     
     func mutate(action: Action) -> Observable<Mutation> {
         switch action {
         case .toggleFavorite:
-            return Observable<(ImageModel, Bool)>
-                .just(
-                    serviceProvider.unsplashAPIService.toggleFavorite(of: currentState.imageModel)
-                )
-                .flatMap { result -> Observable<Mutation> in
-                    return .merge(
-                        .just(.setImageModel(to: result.0)),
-                        .just(.setIsFavorite(to: result.1))
-                    )
-                }
+            return favoriteImageUseCase.toggleFavorite(of: currentState.usImage)
+                .andThen(.just(.setIsFavorite(to: !currentState.isFavorite))).debug()
         }
     }
     
@@ -64,9 +54,6 @@ final class DetailViewReactor: Reactor {
         var newState = state
         
         switch mutation {
-        case let .setImageModel(imageModel):
-            newState.imageModel = imageModel
-            
         case let .setIsFavorite(isFavorite):
             newState.isFavorite = isFavorite
         }
@@ -74,5 +61,3 @@ final class DetailViewReactor: Reactor {
         return newState
     }
 }
-
-

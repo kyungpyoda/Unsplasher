@@ -46,21 +46,8 @@ final class LaunchViewController: UIViewController {
     }
     
     private func goMain() {
-        let apiConfig = APINetworkConfig(
-            baseURL: AppConfiguration.apiBaseURL,
-            headers: [
-                HTTPHeaderKey.authorization.rawValue: AppConfiguration.apiKey
-            ]
-        )
-        let networkManager = NetworkManager(config: apiConfig)
-        let unsplashAPIService = UnsplashAPIService(
-            networkManager: networkManager,
-            storageManager: StorageManager()
-        )
-        let serviceProvider = ServiceProvider(unsplashAPIService: unsplashAPIService)
-        
         DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
-            let mainTab = MainTabBarController(provider: serviceProvider)
+            let mainTab = MainTabBarController()
             AppDelegate.shared?.swapVC(to: mainTab)
         }
     }

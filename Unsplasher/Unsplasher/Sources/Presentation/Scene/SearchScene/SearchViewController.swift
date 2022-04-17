@@ -18,8 +18,8 @@ final class SearchViewController: UIViewController {
     enum ImageListSection {
         case main
     }
-    private typealias ImageListDataSource = UICollectionViewDiffableDataSource<ImageListSection, ImageModel>
-    private typealias ImageListSnapshot = NSDiffableDataSourceSnapshot<ImageListSection, ImageModel>
+    private typealias ImageListDataSource = UICollectionViewDiffableDataSource<ImageListSection, USImage>
+    private typealias ImageListSnapshot = NSDiffableDataSourceSnapshot<ImageListSection, USImage>
     
     // MARK: - Properties
     
@@ -156,7 +156,7 @@ extension SearchViewController: View {
             .disposed(by: disposeBag)
         
         imageCollectionView.rx.willDisplayCell
-            .filter { cell, index in index.item >= (reactor.currentState.imageModels.count - 1) }
+            .filter { cell, index in index.item >= (reactor.currentState.usImages.count - 1) }
             .map { _ in Reactor.Action.loadNextPage }
             .bind(to: reactor.action)
             .disposed(by: disposeBag)
@@ -175,23 +175,23 @@ extension SearchViewController: View {
             .pulse(\.$dataSourceUpdate)
             .compactMap { $0 }
             .observe(on: MainScheduler.instance)
-            .subscribe(onNext: { [weak self] updateType, imageModels in
+            .subscribe(onNext: { [weak self] updateType, usImages in
                 guard let self = self else { return }
                 
                 switch updateType {
                 case .reset:
                     var snapshot = ImageListSnapshot()
                     snapshot.appendSections([.main])
-                    snapshot.appendItems(imageModels, toSection: .main)
+                    snapshot.appendItems(usImages, toSection: .main)
                     self.dataSource.apply(snapshot)
-                    if !imageModels.isEmpty {
+                    if !usImages.isEmpty {
                         self.imageCollectionView.scrollToItem(at: .init(item: 0, section: 0), at: .top, animated: true)
                     }
-                    self.noResultsView.isHidden = !imageModels.isEmpty
+                    self.noResultsView.isHidden = !usImages.isEmpty
                     
                 case .append:
                     var snapshot = self.dataSource.snapshot()
-                    snapshot.appendItems(imageModels, toSection: .main)
+                    snapshot.appendItems(usImages, toSection: .main)
                     self.dataSource.apply(snapshot)
                 }
             })

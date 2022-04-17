@@ -17,60 +17,42 @@ final class PopularViewReactor: Reactor {
     }
     
     enum Mutation {
-        case addImageModels(with: [ImageModel])
+        case addImages(with: [USImage])
         case setPage(to: Int)
     }
     
     struct State {
         @Pulse var page: Int
-        @Pulse var imageModels: [ImageModel]
+        @Pulse var usImages: [USImage]
     }
     
     let initialState: State
     
     // MARK: Dependency
     
-    private let serviceProvider: ServiceProviderType
+    private let fetchPopularImageUseCase: FetchPopularImageUseCase
     
     init(
-        serviceProvider: ServiceProviderType
+        fetchPopularImageUseCase: FetchPopularImageUseCase
     ) {
         self.initialState = State(
             page: 1,
-            imageModels: []
+            usImages: []
         )
-        self.serviceProvider = serviceProvider
+        self.fetchPopularImageUseCase = fetchPopularImageUseCase
     }
     
     func mutate(action: Action) -> Observable<Mutation> {
         switch action {
         case .loadNextPage:
-            return Observable<Mutation>.create { [weak self] observer in
-                if let self = self {
-                    self.serviceProvider.unsplashAPIService.getPopulars(
-                        page: self.currentState.page
-                    ) { result in
-                        switch result {
-                        case let .success(imageModels):
-                            observer.onNext(.addImageModels(with: imageModels))
-                            observer.onCompleted()
-                            
-                        case let .failure(error):
-                            observer.onError(error)
-                        }
-                    }
-                } else {
-                    observer.onCompleted()
+            return fetchPopularImageUseCase.getPopulars(page: self.currentState.page)
+                .flatMap { [weak self] usImages -> Observable<Mutation> in
+                    guard let self = self else { return .empty() }
+                    return Observable.concat(
+                        .just(.addImages(with: usImages)),
+                        .just(.setPage(to: self.currentState.page + 1))
+                    )
                 }
-                return Disposables.create()
-            }
-            .flatMap { [weak self] imageModelMutation -> Observable<Mutation> in
-                guard let self = self else { return .empty() }
-                return Observable.concat(
-                    .just(imageModelMutation),
-                    .just(.setPage(to: self.currentState.page + 1))
-                )
-            }
         }
     }
     
@@ -78,8 +60,8 @@ final class PopularViewReactor: Reactor {
         var newState = state
         
         switch mutation {
-        case let .addImageModels(imageModels):
-            newState.imageModels.append(contentsOf: imageModels)
+        case let .addImages(usImages):
+            newState.usImages.append(contentsOf: usImages)
             
         case let .setPage(newPage):
             newState.page = newPage
@@ -89,8 +71,10 @@ final class PopularViewReactor: Reactor {
     }
     
     func makeDetailViewReactor(for selectedIndexPath: IndexPath) -> DetailViewReactor {
-        let selectedItem = currentState.imageModels[selectedIndexPath.item]
-        return DetailViewReactor(serviceProvider: serviceProvider, imageModel: selectedItem)
+        let selectedItem = currentState.usImages[selectedIndexPath.item]
+        let storageManager = StorageManager()
+        let favoriteImageRepository = DefaultFavoriteImageRepository(storageManager: storageManager)
+        let favoriteImageUseCase = DefaultFavoriteImageUseCase(favoriteImageRepository: favoriteImageRepository)
+        return DetailViewReactor(favoriteImageUseCase: favoriteImageUseCase, usImage: selectedItem)
     }
 }
-

@@ -42,16 +42,6 @@ final class MainTabBarController: UITabBarController {
         }
     }
     
-    private let provider: ServiceProviderType
-    
-    init(provider: ServiceProviderType) {
-        self.provider = provider
-        super.init(nibName: nil, bundle: nil)
-    }
-    required init?(coder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
-    }
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         tabBar.tintColor = .label
@@ -59,20 +49,37 @@ final class MainTabBarController: UITabBarController {
     }
     
     private func setUp() {
+        let apiConfig = APINetworkConfig(
+            baseURL: AppConfiguration.apiBaseURL,
+            headers: [
+                HTTPHeaderKey.authorization.rawValue: AppConfiguration.apiKey
+            ]
+        )
+        let networkManager = NetworkManager(config: apiConfig)
+        let storageManager = StorageManager()
+        
         let tabs: [UIViewController] = Tab.allCases.map { tab in
             switch tab {
             case .search:
-                let reactor = SearchViewReactor(serviceProvider: provider)
+                let searhImageRepository = DefaultSearchImageRepository(networkManager: networkManager)
+                let searchImageUseCase = DefaultSearchImageUseCase(searchImageRepository: searhImageRepository)
+                let reactor = SearchViewReactor(searchImageUseCase: searchImageUseCase)
                 let vc = SearchViewController(reactor: reactor)
                 vc.tabBarItem = tab.tabBarItem
                 return vc
+                
             case .popular:
-                let reactor = PopularViewReactor(serviceProvider: provider)
+                let fetchPopularImageRepository = DefaultFetchPopularImageRepository(networkManager: networkManager)
+                let fetchPopularImageUseCase = DefaultFetchPopularImageUseCase(fetchPopularImageRepository: fetchPopularImageRepository)
+                let reactor = PopularViewReactor(fetchPopularImageUseCase: fetchPopularImageUseCase)
                 let vc = PopularViewController(reactor: reactor)
                 vc.tabBarItem = tab.tabBarItem
                 return vc
+                
             case .favorite:
-                let reactor = FavoriteViewReactor(serviceProvider: provider)
+                let favoriteImageRepository = DefaultFavoriteImageRepository(storageManager: storageManager)
+                let favoriteImageUseCase = DefaultFavoriteImageUseCase(favoriteImageRepository: favoriteImageRepository)
+                let reactor = FavoriteViewReactor(favoriteImageUseCase: favoriteImageUseCase)
                 let vc = FavoriteViewController(reactor: reactor)
                 vc.tabBarItem = tab.tabBarItem
                 return vc

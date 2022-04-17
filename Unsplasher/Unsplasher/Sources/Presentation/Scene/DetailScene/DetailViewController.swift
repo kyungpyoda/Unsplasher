@@ -87,7 +87,7 @@ extension DetailViewController: View {
     
     private func bindState(reactor: DetailViewReactor) {
         reactor
-            .pulse(\.$imageModel)
+            .pulse(\.$usImage)
             .observe(on: MainScheduler.instance)
             .subscribe(onNext: { imageModel in
                 if let imageURLStr = imageModel.urls?.small {

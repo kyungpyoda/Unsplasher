@@ -21,9 +21,9 @@ protocol StorageManagerType {
         key: Any
     ) -> T?
     
-    func create(_ object: Object) -> Bool
+    func create(_ object: Object) throws -> Void
     
-    func delete(_ object: Object) -> Bool
+    func delete(_ object: Object) throws -> Void
     
     func subscribe<T: Object>(
         for type: T.Type,
@@ -62,29 +62,15 @@ final class StorageManager: StorageManagerType {
         return realm?.object(ofType: T.self, forPrimaryKey: key)
     }
     
-    @discardableResult
-    func create(_ object: Object) -> Bool {
-        do {
-            try realm?.write {
-                realm?.add(object, update: .modified)
-            }
-            return true
-        } catch {
-            debugPrint(error.localizedDescription)
-            return false
+    func create(_ object: Object) throws {
+        try realm?.write {
+            realm?.add(object, update: .modified)
         }
     }
     
-    @discardableResult
-    func delete(_ object: Object) -> Bool {
-        do {
-            try realm?.write {
-                realm?.delete(object)
-            }
-            return true
-        } catch {
-            debugPrint(error.localizedDescription)
-            return false
+    func delete(_ object: Object) throws {
+        try realm?.write {
+            realm?.delete(object)
         }
     }
     
