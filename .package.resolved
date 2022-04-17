@@ -47,6 +47,15 @@
         }
       },
       {
+        "package": "Swinject",
+        "repositoryURL": "https://github.com/Swinject/Swinject",
+        "state": {
+          "branch": null,
+          "revision": "f10b6e9ebff440f985c43008f7c2d097639fcb81",
+          "version": "2.8.1"
+        }
+      },
+      {
         "package": "Then",
         "repositoryURL": "https://github.com/devxoul/Then",
         "state": {
