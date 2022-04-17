@@ -13,25 +13,9 @@ let projectName: String = "Unsplasher"
 let project = Project.project(
     name: projectName,
     product: .app,
-    packages: [
-        .RxSwift,
-        .ReactorKit,
-        .RealmSwift,
-        .Swinject,
-        .SnapKit,
-        .Then,
-    ],
     dependencies: [
-        .SPM.RxSwift,
-        .SPM.RxCocoa,
-        .SPM.RxRelay,
-        .SPM.RxBlocking,
-        .SPM.ReactorKit,
-        .SPM.Realm,
-        .SPM.RealmSwift,
-        .SPM.Swinject,
-        .SPM.SnapKit,
-        .SPM.Then,
+        .presentationModule,
+        .dataModule,
     ],
     infoPlist: "Supporting/Info.plist",
     sources: [

@@ -8,35 +8,40 @@
 import ProjectDescription
 
 extension TargetDependency {
-//    public static let presentationModule: TargetDependency = .project(
-//        target: "PresentationModule",
-//        path: .relativeToRoot("Projects/PresentationModule")
-//    )
-//
-//    public static let domainModule: TargetDependency = .project(
-//        target: "DomainModule",
-//        path: .relativeToRoot("Projects/Modules/DomainModule")
-//    )
-//
-//    public static let dataModule: TargetDependency = .project(
-//        target: "DataModule",
-//        path: .relativeToRoot("Projects/Modules/DataModule")
-//    )
-//
-//    public static let thirdPartyManager: TargetDependency = .project(
-//        target: "ThirdPartyManager",
-//        path: .relativeToRoot("Projects/Modules/ThirdPartyManager")
-//    )
-//
-//    public static let networkModule: TargetDependency = .project(
-//        target: "NetworkModule",
-//        path: .relativeToRoot("Projects/Modules/NetworkModule")
-//    )
-//
-//    public static let injectionManager: TargetDependency = .project(
-//        target: "InjectionManager",
-//        path: .relativeToRoot("Projects/Modules/InjectionManager")
-//    )
+    public static let presentationModule: TargetDependency = .project(
+        target: "PresentationModule",
+        path: .relativeToRoot("Projects/PresentationModule")
+    )
+
+    public static let domainModule: TargetDependency = .project(
+        target: "DomainModule",
+        path: .relativeToRoot("Projects/Modules/DomainModule")
+    )
+
+    public static let dataModule: TargetDependency = .project(
+        target: "DataModule",
+        path: .relativeToRoot("Projects/Modules/DataModule")
+    )
+
+    public static let thirdPartyManager: TargetDependency = .project(
+        target: "ThirdPartyManager",
+        path: .relativeToRoot("Projects/Modules/ThirdPartyManager")
+    )
+
+    public static let networkModule: TargetDependency = .project(
+        target: "NetworkModule",
+        path: .relativeToRoot("Projects/Modules/NetworkModule")
+    )
+    
+    public static let databaseModule: TargetDependency = .project(
+        target: "DatabaseModule",
+        path: .relativeToRoot("Projects/Modules/DatabaseModule")
+    )
+
+    public static let injectionManager: TargetDependency = .project(
+        target: "InjectionManager",
+        path: .relativeToRoot("Projects/Modules/InjectionManager")
+    )
 }
 
 extension TargetDependency {
